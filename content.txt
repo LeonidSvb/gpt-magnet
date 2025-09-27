@@ -1,0 +1,878 @@
+# LANDING PAGE CONTENT
+# AI Lead-Magnet Generator - SystemHustle
+# Honest, No-BS Version
+
+===============================
+NAVIGATION (EN/RU)
+===============================
+
+EN_NAV_STORY = "Story"
+EN_NAV_DEMO = "Demo"
+EN_NAV_PRICING = "Pricing"
+EN_NAV_CTA = "Get Early Access"
+
+RU_NAV_STORY = "История"
+RU_NAV_DEMO = "Демо"
+RU_NAV_PRICING = "Тарифы"
+RU_NAV_CTA = "Получить доступ"
+
+---
+РЕЖИССУРА: Sticky navigation с плавной прокруткой. Добавить индикатор прогресса чтения (progress bar вверху). Переключатель EN/RU должен быть заметным, но не навязчивым.
+---
+
+===============================
+HERO SECTION (EN/RU)
+===============================
+
+EN_HERO_OVERLINE = "Sales Intelligence Revolution"
+EN_HERO_H1 = "Stop Getting Surface Data. Start Getting Sales Intelligence."
+EN_HERO_TYPING = "Meet Sarah. She spends $2,000/month on ads, gets 100 leads... but only 3 book calls."
+EN_HERO_PRIMARY_CTA = "Get Early Access"
+EN_HERO_SECONDARY_CTA = "See How It Works"
+EN_HERO_SCARCITY = "⚡ Testing with first 20 businesses"
+
+RU_HERO_OVERLINE = "Революция продаж через данные"
+RU_HERO_H1 = "Хватит собирать пустые контакты. Начните получать реальную информацию о клиентах."
+RU_HERO_TYPING = "Знакомьтесь — Дарья. Она тратит 150,000₽ в месяц на рекламу, получает 100 лидов... но только 3 записываются на звонок."
+RU_HERO_PRIMARY_CTA = "Получить доступ"
+RU_HERO_SECONDARY_CTA = "Посмотреть как работает"
+RU_HERO_SCARCITY = "⚡ Тестируем с первыми 20 бизнесами"
+
+---
+РЕЖИССУРА: Typing-эффект для строки про Дарью (имитация печати в реальном времени). Герой-секция с видео-бэкграундом (абстрактные data flows / AI визуализация). CTA кнопки с micro-interactions (hover-эффекты, ripple). Scarcity badge пульсирует раз в 3 секунды.
+---
+
+===============================
+STORY SECTION (EN/RU)
+===============================
+
+EN_STORY_TITLE = "The Problem Every Business Owner Faces"
+EN_STORY_SUBTITLE = "You know this story. Maybe you're living it right now."
+EN_STORY_CHARACTER_NAME = "Meet Sarah - Personal Development Coach"
+EN_STORY_CHARACTER_DESC = "Sarah runs a high-ticket coaching program. She helps ambitious professionals break through their income ceiling. Her program costs $15,000. But she has a problem that's costing her 6 figures yearly."
+
+EN_STORY_PROBLEMS = [
+    "Pays $80+ per lead just to get their email",
+    "Has 3,000 contacts but knows nothing about their real situation",
+    "Sends generic follow-ups that feel robotic",
+    "Can't tell who's ready to invest $15K vs who's just browsing"
+]
+
+EN_STORY_PAIN = "Result: 98% of her leads never even book a call. The 2% who do often aren't qualified."
+
+RU_STORY_TITLE = "Проблема, которую знает каждый предприниматель"
+RU_STORY_SUBTITLE = "Вы знаете эту историю. Возможно, живете ею прямо сейчас."
+RU_STORY_CHARACTER_NAME = "Знакомьтесь — Дарья, коуч по личной эффективности"
+RU_STORY_CHARACTER_DESC = "Дарья ведет премиальную программу коучинга. Помогает амбициозным профессионалам пробить свой потолок дохода. Её программа стоит 1,000,000₽. Но у неё есть проблема, которая обходится ей в миллионы рублей ежегодно."
+
+RU_STORY_PROBLEMS = [
+    "Платит 6,000₽+ за лид, получая только email",
+    "Имеет 3,000 контактов, но ничего не знает об их реальной ситуации",
+    "Отправляет шаблонные сообщения, которые воспринимаются как боты",
+    "Не может отличить того, кто готов инвестировать миллион, от того, кто просто смотрит"
+]
+
+RU_STORY_PAIN = "Результат: 98% её лидов даже не записываются на звонок. Те 2%, кто записываются, часто не квалифицированы."
+
+---
+РЕЖИССУРА: Scroll-triggered animation - проблемы появляются одна за одной при скролле (fade-in + slide-up). Добавить визуализацию: иконка лида → пустой контакт → корзина (98% лидов "улетают"). Сделать мини-калькулятор потерь: "Если вы тратите X на рекламу, вы теряете Y ежегодно". Интерактив: пользователь вводит свой бюджет → видит потери.
+---
+
+===============================
+AWAKENING SECTION (EN/RU)
+===============================
+
+EN_AWAKENING_TITLE = "What If There Was a Different Way?"
+EN_AWAKENING_SUBTITLE = "What if you could know everything about a lead before the first conversation?"
+EN_AWAKENING_REVEAL_BUTTON = "Show Me How"
+EN_AWAKENING_RESULT_TITLE = "The Transformation"
+
+EN_AWAKENING_INSIGHTS = [
+    {
+        "title": "The Question",
+        "desc": "What if visitors answered 12-15 deep questions about their situation, goals, and challenges?"
+    },
+    {
+        "title": "The Challenge",
+        "desc": "Normally they'd bounce immediately. Who has time for 15 questions?"
+    },
+    {
+        "title": "The Solution",
+        "desc": "But what if they got massive value in return? A personalized strategy worth $300-500?"
+    },
+    {
+        "title": "The Magic",
+        "desc": "Now you know their income, goals, pain points, budget, and urgency BEFORE the first call."
+    },
+    {
+        "title": "The Result",
+        "desc": "Your follow-ups are hyper-personalized. Conversion could potentially improve 5-8x."
+    }
+]
+
+RU_AWAKENING_TITLE = "А что если есть другой способ?"
+RU_AWAKENING_SUBTITLE = "Что если вы могли бы знать всё о лиде до первого разговора?"
+RU_AWAKENING_REVEAL_BUTTON = "Показать как"
+RU_AWAKENING_RESULT_TITLE = "Трансформация"
+
+RU_AWAKENING_INSIGHTS = [
+    {
+        "title": "Вопрос",
+        "desc": "Что если посетители отвечали бы на 12-15 глубоких вопросов о своей ситуации, целях и вызовах?"
+    },
+    {
+        "title": "Проблема",
+        "desc": "Обычно они сразу уходят. У кого есть время на 15 вопросов?"
+    },
+    {
+        "title": "Решение",
+        "desc": "Но что если взамен они получали огромную ценность? Персональную стратегию стоимостью 20,000-35,000₽?"
+    },
+    {
+        "title": "Магия",
+        "desc": "Теперь вы знаете их доход, цели, боли, бюджет и срочность ДО первого звонка."
+    },
+    {
+        "title": "Результат",
+        "desc": "Ваши последующие сообщения гиперперсональны. Конверсия потенциально может вырасти в 5-8 раз."
+    }
+]
+
+---
+РЕЖИССУРА: Кнопка "Показать как" раскрывает контент через плавную аккордеон-анимацию. Каждый insight появляется в виде карточки с flip-эффектом (3D rotate). Добавить звуковой эффект "click" при раскрытии (опционально, с возможностью отключить). Timeline visualization слева показывает прогресс истории.
+---
+
+===============================
+DEMO STEPS (EN/RU)
+===============================
+
+EN_DEMO_TITLE = "How the System Works"
+EN_DEMO_SUBTITLE = "6 steps from visitor to qualified lead with complete intelligence"
+EN_DEMO_PREV = "Previous"
+EN_DEMO_NEXT = "Next Step"
+EN_DEMO_START = "Start Testing"
+
+EN_DEMO_STEPS = [
+    {
+        "title": "Visitor Arrives",
+        "desc": "Someone visits your site and sees your Custom-GPT widget promising real, personalized value.",
+        "icon": "👤",
+        "features": ["Branded to your business", "Clear value proposition", "Mobile-first design"],
+        "example": "Get Your Personal Growth Roadmap - Free 15-min AI Analysis"
+    },
+    {
+        "title": "Deep Discovery",
+        "desc": "They answer 12-15 strategic questions about their situation, goals, and obstacles.",
+        "icon": "❓",
+        "features": ["Smart question flow", "Conditional logic", "Progress tracking"],
+        "example": "What's your current annual income? What's blocking you from 2x growth?"
+    },
+    {
+        "title": "AI Analysis",
+        "desc": "Custom-GPT processes their answers and generates a truly personalized strategy document.",
+        "icon": "🧠",
+        "features": ["Real AI analysis", "Industry-specific insights", "Actionable recommendations"],
+        "example": "Based on your $80K income and leadership challenges, here are 4 specific paths..."
+    },
+    {
+        "title": "Value Delivery",
+        "desc": "They receive a detailed strategy guide worth hundreds - customized to their exact situation.",
+        "icon": "📄",
+        "features": ["Professional format", "Your brand voice", "Immediately useful"],
+        "example": "Your Personal Income Breakthrough Blueprint - 8-12 pages of custom strategies"
+    },
+    {
+        "title": "Natural Opt-In",
+        "desc": "To get their personalized guide, they willingly provide contact info.",
+        "icon": "📱",
+        "features": ["High-value exchange", "Natural flow", "Privacy-compliant"],
+        "example": "Enter your WhatsApp/email to receive your personalized blueprint"
+    },
+    {
+        "title": "Complete Intelligence",
+        "desc": "You now have a rich profile: income, goals, obstacles, urgency, psychology.",
+        "icon": "💎",
+        "features": ["Full customer profile", "Pain point mapping", "Buying intent signals"],
+        "example": "Income: $80K, Goal: $200K, Obstacle: Team leadership, Urgency: 6 months"
+    }
+]
+
+RU_DEMO_TITLE = "Как работает система"
+RU_DEMO_SUBTITLE = "6 шагов от посетителя до квалифицированного лида с полной информацией"
+RU_DEMO_PREV = "Назад"
+RU_DEMO_NEXT = "Следующий шаг"
+RU_DEMO_START = "Начать тестирование"
+
+RU_DEMO_STEPS = [
+    {
+        "title": "Посетитель приходит",
+        "desc": "Кто-то заходит на ваш сайт и видит Custom-GPT виджет, обещающий реальную персональную ценность.",
+        "icon": "👤",
+        "features": ["Брендинг под ваш бизнес", "Чёткое ценностное предложение", "Mobile-first дизайн"],
+        "example": "Получите свою Карту Личного Роста - Бесплатный 15-мин AI-анализ"
+    },
+    {
+        "title": "Глубокое исследование",
+        "desc": "Они отвечают на 12-15 стратегических вопросов о своей ситуации, целях и препятствиях.",
+        "icon": "❓",
+        "features": ["Умный поток вопросов", "Условная логика", "Отслеживание прогресса"],
+        "example": "Какой ваш текущий годовой доход? Что блокирует ваш рост в 2 раза?"
+    },
+    {
+        "title": "AI-анализ",
+        "desc": "Custom-GPT обрабатывает ответы и генерирует действительно персонализированный документ-стратегию.",
+        "icon": "🧠",
+        "features": ["Настоящий AI-анализ", "Отраслевые инсайты", "Действенные рекомендации"],
+        "example": "Основываясь на вашем доходе 6М₽ и вызовах в лидерстве, вот 4 конкретных пути..."
+    },
+    {
+        "title": "Доставка ценности",
+        "desc": "Они получают детальный гайд-стратегию стоимостью в десятки тысяч - кастомизированный под их точную ситуацию.",
+        "icon": "📄",
+        "features": ["Профессиональный формат", "Голос вашего бренда", "Сразу применимо"],
+        "example": "Ваш План Прорыва в Доходе - 8-12 страниц кастомных стратегий"
+    },
+    {
+        "title": "Естественная подписка",
+        "desc": "Чтобы получить персональный гайд, они добровольно оставляют контакт.",
+        "icon": "📱",
+        "features": ["Обмен высокой ценности", "Естественный флоу", "Соответствие Privacy"],
+        "example": "Введите WhatsApp/email для получения вашего плана"
+    },
+    {
+        "title": "Полная информация",
+        "desc": "У вас теперь богатый профиль: доход, цели, препятствия, срочность, психология.",
+        "icon": "💎",
+        "features": ["Полный профиль клиента", "Карта болевых точек", "Сигналы намерения купить"],
+        "example": "Доход: 6М₽, Цель: 15М₽, Препятствие: Лидерство команды, Срочность: 6 месяцев"
+    }
+]
+
+---
+РЕЖИССУРА: Интерактивный степпер с прогресс-баром. При клике на "Next" - плавный переход с slide-эффектом. Добавить мини-превью справа: живая демонстрация каждого шага (скриншот или мини-интерфейс). Иконки animated (лёгкое покачивание при hover). На мобильных - swipe для переключения шагов.
+---
+
+===============================
+LIVE EXAMPLES (EN/RU)
+===============================
+
+EN_LIVE_EXAMPLE_TITLE = "Real-World Applications"
+EN_LIVE_EXAMPLE_SUBTITLE = "See how this works across different business models"
+
+EN_INDUSTRIES = [
+    {
+        "icon": "🎯",
+        "name": "Personal Coach (High-Ticket)",
+        "desc": "Transform cold traffic into qualified high-ticket leads.",
+        "questions": [
+            "What's your current annual income?",
+            "What's your #1 growth obstacle right now?",
+            "Have you invested in coaching before?",
+            "What would 3x income mean for your life?"
+        ],
+        "output": "Based on your $75K income and leadership challenges, here's your path to $200K+: 1) Address these 3 mindset blocks first, 2) Implement this leadership framework with your team, 3) These specific skills to develop in next 90 days...",
+        "result": "Conservative estimate: 10-15% of leads book qualified calls vs 2-3% with basic lead magnets",
+        "intel": ["Income level & goals", "Specific obstacles", "Investment history", "Motivation & urgency"]
+    },
+    {
+        "icon": "📚",
+        "name": "Info-Entrepreneur (Courses)",
+        "desc": "Qualify course buyers and segment by commitment level.",
+        "questions": [
+            "What's your experience level in [topic]?",
+            "How much time can you dedicate weekly?",
+            "What's your budget for learning?",
+            "What specific outcome do you need?"
+        ],
+        "output": "For your beginner level and 5 hours/week availability, here's your learning path: Start with these fundamentals (weeks 1-4), then move to practical application (weeks 5-8), finally implement these advanced strategies...",
+        "result": "Conservative estimate: Course conversion could improve 3-4x with proper segmentation",
+        "intel": ["Skill level", "Time availability", "Budget range", "Specific goals"]
+    },
+    {
+        "icon": "📈",
+        "name": "Marketing Agency",
+        "desc": "Instantly qualify prospects and showcase expertise.",
+        "questions": [
+            "What's your monthly marketing budget?",
+            "Which channels are you currently using?",
+            "What's your current cost per lead?",
+            "What's your biggest marketing frustration?"
+        ],
+        "output": "Your marketing snapshot: You're overspending on Facebook (should be 40% of budget, not 75%), your landing page conversion is below industry average (2.1% vs 4-6%), and you're missing email automation opportunities worth $2K+ monthly...",
+        "result": "Conservative estimate: Proposal acceptance could improve from 20% to 35-45%",
+        "intel": ["Budget size", "Current channels & performance", "Pain points", "Sophistication level"]
+    },
+    {
+        "icon": "🏠",
+        "name": "Real Estate Agent",
+        "desc": "Pre-qualify buyers and match them with perfect properties.",
+        "questions": [
+            "What's your budget range?",
+            "Timeline for purchase?",
+            "Must-have features vs nice-to-have?",
+            "Is financing pre-approved?"
+        ],
+        "output": "Based on your $400-500K budget and 3-month timeline, here are 3 neighborhoods that fit your criteria: Area A offers best schools (your priority), Area B has lowest property tax, Area C is appreciating fastest (12% last year)...",
+        "result": "Conservative estimate: Serious buyer identification improves 4-5x vs standard contact forms",
+        "intel": ["Budget & financing status", "Timeline & urgency", "Priorities & deal-breakers", "Decision-making authority"]
+    }
+]
+
+RU_LIVE_EXAMPLE_TITLE = "Реальные применения"
+RU_LIVE_EXAMPLE_SUBTITLE = "Посмотрите как это работает в разных бизнес-моделях"
+
+RU_INDUSTRIES = [
+    {
+        "icon": "🎯",
+        "name": "Личный коуч (High-Ticket)",
+        "desc": "Превращайте холодный трафик в квалифицированные премиальные лиды.",
+        "questions": [
+            "Какой ваш текущий годовой доход?",
+            "Какое препятствие #1 на пути роста прямо сейчас?",
+            "Инвестировали ли в коучинг ранее?",
+            "Что бы значил для вас доход в 3 раза больше?"
+        ],
+        "output": "Основываясь на вашем доходе 6М₽ и вызовах в лидерстве, вот ваш путь к 15М₽+: 1) Сначала проработайте эти 3 ментальных блока, 2) Внедрите этот фреймворк лидерства с командой, 3) Эти конкретные навыки развить за следующие 90 дней...",
+        "result": "Консервативно: 10-15% лидов записываются на квалифицированные звонки vs 2-3% с обычными лид-магнитами",
+        "intel": ["Уровень дохода и цели", "Конкретные препятствия", "История инвестиций", "Мотивация и срочность"]
+    },
+    {
+        "icon": "📚",
+        "name": "Инфо-предприниматель (Курсы)",
+        "desc": "Квалифицируйте покупателей курсов и сегментируйте по уровню вовлеченности.",
+        "questions": [
+            "Какой у вас уровень опыта в [теме]?",
+            "Сколько времени в неделю можете уделить?",
+            "Какой бюджет на обучение?",
+            "Какой конкретный результат нужен?"
+        ],
+        "output": "Для вашего начального уровня и 5 часов в неделю, вот ваш путь обучения: Начните с этих основ (недели 1-4), затем переходите к практическому применению (недели 5-8), наконец внедрите эти продвинутые стратегии...",
+        "result": "Консервативно: конверсия в курс может улучшиться в 3-4 раза при правильной сегментации",
+        "intel": ["Уровень навыков", "Доступность времени", "Диапазон бюджета", "Конкретные цели"]
+    },
+    {
+        "icon": "📈",
+        "name": "Маркетинговое агентство",
+        "desc": "Мгновенно квалифицируйте перспективы и демонстрируйте экспертизу.",
+        "questions": [
+            "Какой месячный маркетинговый бюджет?",
+            "Какие каналы используете сейчас?",
+            "Какова текущая стоимость лида?",
+            "Какая самая большая фрустрация в маркетинге?"
+        ],
+        "output": "Ваш маркетинговый снимок: Вы переплачиваете в Facebook (должно быть 40% бюджета, а не 75%), конверсия лендинга ниже среднего по индустрии (2.1% vs 4-6%), и вы упускаете возможности email-автоматизации стоимостью 150,000₽+ в месяц...",
+        "result": "Консервативно: принятие предложений может вырасти с 20% до 35-45%",
+        "intel": ["Размер бюджета", "Текущие каналы и производительность", "Болевые точки", "Уровень опыта"]
+    },
+    {
+        "icon": "🏠",
+        "name": "Риелтор",
+        "desc": "Предквалифицируйте покупателей и подбирайте идеальные объекты.",
+        "questions": [
+            "Какой диапазон бюджета?",
+            "Таймлайн покупки?",
+            "Обязательные фичи vs желательные?",
+            "Одобрено ли финансирование?"
+        ],
+        "output": "Основываясь на вашем бюджете 30-40М₽ и таймлайне 3 месяца, вот 3 района под ваши критерии: Район А предлагает лучшие школы (ваш приоритет), Район Б имеет самый низкий налог на недвижимость, Район В растет быстрее всех (12% за год)...",
+        "result": "Консервативно: идентификация серьезных покупателей улучшается в 4-5 раз vs стандартные формы контактов",
+        "intel": ["Бюджет и статус финансирования", "Таймлайн и срочность", "Приоритеты и deal-breakers", "Полномочия принятия решений"]
+    }
+]
+
+---
+РЕЖИССУРА: Tabs или карточки для переключения между индустриями. При клике - плавный fade + scale эффект. Добавить "Try Example" кнопку - открывает модальное окно с симуляцией опросника (3-4 вопроса). В конце симуляции показать примерный AI-ответ. На десктопе - grid 2x2, на мобиле - вертикальный scroll с snap-эффектом.
+---
+
+===============================
+FOLLOW-UP MAGIC (EN/RU)
+===============================
+
+EN_FOLLOWUP_TITLE = "The Follow-Up Transformation"
+EN_FOLLOWUP_SUBTITLE = "Compare generic outreach vs intelligence-driven communication"
+EN_FOLLOWUP_CTA = "Get This Intelligence Edge"
+
+EN_FOLLOWUP_BEFORE_TITLE = "Before: Generic Spray & Pray"
+EN_FOLLOWUP_BEFORE_MESSAGES = [
+    "Hi! Thanks for downloading our guide.",
+    "Just checking in - are you interested in our services?",
+    "We help people grow. Want to schedule a call?",
+    "Last chance for a free consultation!"
+]
+
+EN_FOLLOWUP_AFTER_TITLE = "After: Intelligence-Powered"
+EN_FOLLOWUP_AFTER_MESSAGES = [
+    "Hi Jessica! Saw you're looking to grow from $75K to $200K annually - that's a bold 2.7x goal.",
+    "Your biggest challenge (managing a team while growing) is exactly what I helped 3 clients solve in Q4. One went from 3 to 12 employees in 8 months.",
+    "Based on your 5 years in business, you're past the survival stage. Your bottleneck is likely systems, not skills. Here's what I mean...",
+    "I recorded a 4-min video showing the exact framework one client used to scale past your goal. Worth a watch?"
+]
+
+RU_FOLLOWUP_TITLE = "Трансформация коммуникации"
+RU_FOLLOWUP_SUBTITLE = "Сравните обычные рассылки vs коммуникацию на основе данных"
+RU_FOLLOWUP_CTA = "Получить это преимущество"
+
+RU_FOLLOWUP_BEFORE_TITLE = "До: Обычная рассылка"
+RU_FOLLOWUP_BEFORE_MESSAGES = [
+    "Привет! Спасибо за скачивание гайда.",
+    "Просто проверяю - интересуют наши услуги?",
+    "Мы помогаем людям расти. Хотите созвон?",
+    "Последний шанс на бесплатную консультацию!"
+]
+
+RU_FOLLOWUP_AFTER_TITLE = "После: На основе данных"
+RU_FOLLOWUP_AFTER_MESSAGES = [
+    "Привет, Анна! Вижу хочешь вырасти с 6М₽ до 15М₽ годовых - смелая цель в 2.5 раза.",
+    "Твой главный вызов (управление командой во время роста) - именно то, что я помог решить 3 клиентам в Q4. Один вырос с 3 до 12 сотрудников за 8 месяцев.",
+    "Основываясь на твоих 5 годах в бизнесе, ты прошла стадию выживания. Твоё узкое место скорее всего системы, а не навыки. Вот что я имею в виду...",
+    "Я записала 4-минутное видео с точным фреймворком, который один клиент использовал чтобы превысить твою цель. Стоит посмотреть?"
+]
+
+---
+РЕЖИССУРА: Split-screen сравнение (50/50). Левая сторона (Before) - серая, скучная, тусклые цвета. Правая (After) - яркая, цветная, с подсветкой ключевых данных. Анимация появления: сообщения "печатаются" как в мессенджере. Добавить highlight ключевых данных в After-версии ("$75K", "2.7x", "5 years"). Toggle переключатель "Show Data Sources" - показывает откуда взялась каждая деталь.
+---
+
+===============================
+VALUE STACK (EN/RU) - HONEST VERSION
+===============================
+
+EN_VALUE_STACK_TITLE = "What This Replaces"
+EN_VALUE_STACK_SUBTITLE = "Conservative value breakdown of what you'd pay separately"
+EN_VALUE_STACK_CTA = "Get Early Access Pricing"
+
+EN_VALUE_ITEMS = [
+    {
+        "title": "Customer Research Consultant",
+        "desc": "Professional customer discovery interviews & analysis",
+        "price": "$2,000-3,000",
+        "note": "Typical agency rate for 10-15 customer interviews"
+    },
+    {
+        "title": "Custom Content Creation",
+        "desc": "Personalized reports, guides, and recommendations",
+        "price": "$1,500-2,000",
+        "note": "Per lead - what agencies charge for custom content"
+    },
+    {
+        "title": "CRM Integration Setup",
+        "desc": "Connect to HubSpot, GHL, Airtable + automation flows",
+        "price": "$800-1,200",
+        "note": "One-time setup cost with automation consultant"
+    },
+    {
+        "title": "Intelligent Follow-up System",
+        "desc": "Personalized email sequences based on customer data",
+        "price": "$1,000-1,500",
+        "note": "Custom sequence development + implementation"
+    }
+]
+
+EN_VALUE_TOTAL = "Traditional Approach: $5,300-7,700+"
+EN_VALUE_YOUR_PRICE = "SystemHustle: Starting at $99"
+EN_VALUE_DISCLAIMER = "This system is in active development. Early adopters get lifetime grandfathered pricing."
+
+RU_VALUE_STACK_TITLE = "Что это заменяет"
+RU_VALUE_STACK_SUBTITLE = "Консервативная оценка того, что вы бы платили отдельно"
+RU_VALUE_STACK_CTA = "Получить цену раннего доступа"
+
+RU_VALUE_ITEMS = [
+    {
+        "title": "Консультант по исследованию клиентов",
+        "desc": "Профессиональные интервью и анализ клиентов",
+        "price": "150,000-220,000₽",
+        "note": "Типичная ставка агентства за 10-15 интервью клиентов"
+    },
+    {
+        "title": "Создание кастомного контента",
+        "desc": "Персонализированные отчёты, гайды и рекомендации",
+        "price": "110,000-150,000₽",
+        "note": "На лид - что берут агентства за кастомный контент"
+    },
+    {
+        "title": "Настройка интеграции CRM",
+        "desc": "Подключение к HubSpot, GHL, Airtable + автоматизация",
+        "price": "60,000-90,000₽",
+        "note": "Единоразовая настройка с консультантом по автоматизации"
+    },
+    {
+        "title": "Умная система последующих сообщений",
+        "desc": "Персонализированные email-последовательности на основе данных",
+        "price": "75,000-110,000₽",
+        "note": "Разработка кастомной последовательности + внедрение"
+    }
+]
+
+RU_VALUE_TOTAL = "Традиционный подход: 395,000-570,000₽+"
+RU_VALUE_YOUR_PRICE = "SystemHustle: От 7,500₽"
+RU_VALUE_DISCLAIMER = "Система в активной разработке. Ранние пользователи получают пожизненную фиксацию цены."
+
+---
+РЕЖИССУРА: Stack visualization - блоки складываются друг на друга с анимацией (падают сверху). При наведении на каждый item - expand с показом "note". Внизу - большой counter анимированно считает до финальной суммы. После показа традиционной цены - зачеркивание + появление цены SystemHustle с конфетти-эффектом. Disclaimer выделить тонкой рамкой и иконкой "честность".
+---
+
+===============================
+PRICING PLANS (EN/RU) - HONEST VERSION
+===============================
+
+EN_PRICING_TITLE = "Choose Your Starting Point"
+EN_PRICING_SUBTITLE = "Real scenarios for real businesses - pick what fits your stage"
+EN_PRICING_GUARANTEE = "30-day money-back guarantee. If it doesn't improve your lead quality, keep the system and get a full refund. No questions asked."
+
+EN_PRICING_PLANS = [
+    {
+        "name": "Starter",
+        "price": "$99",
+        "billing": "one-time",
+        "desc": "Test the concept with your audience",
+        "featured": false,
+        "story_title": "Perfect for: Solo Entrepreneurs",
+        "story_desc": "You want to test if this beats your current lead magnet. Expect 2-4x more engaged leads.",
+        "features": [
+            "Pre-built question templates",
+            "Basic brand customization",
+            "Google Sheets integration",
+            "Email delivery",
+            "7-day email support",
+            "30-day money-back guarantee"
+        ],
+        "limitations": "Limited to 100 leads/month",
+        "cta": "Start Testing"
+    },
+    {
+        "name": "Professional",
+        "price": "$300-500",
+        "billing": "one-time setup",
+        "desc": "Full brand customization",
+        "featured": true,
+        "story_title": "Perfect for: Established Coaches & Agencies",
+        "story_desc": "You need it to perfectly match your brand and collect detailed lead intelligence. Expect 40-60% improvement in lead quality.",
+        "features": [
+            "Complete brand customization (colors, fonts, voice)",
+            "Custom question flows",
+            "Google Sheets + advanced integrations",
+            "Analytics dashboard",
+            "Direct support from founder",
+            "Setup consultation call"
+        ],
+        "limitations": "Up to 500 leads/month",
+        "cta": "Go Professional"
+    },
+    {
+        "name": "Enterprise",
+        "price": "$1,000+",
+        "billing": "custom",
+        "desc": "Full automation at scale",
+        "featured": false,
+        "story_title": "Perfect for: High-Volume Businesses",
+        "story_desc": "You're processing 200+ leads daily. Need CRM automation, custom sequences, and advanced features.",
+        "features": [
+            "Everything in Professional",
+            "Unlimited lead volume",
+            "CRM integration (HubSpot, GHL, Airtable)",
+            "Custom AI training on your data",
+            "Automated follow-up sequences",
+            "Advanced analytics & reporting",
+            "White-label options"
+        ],
+        "limitations": "None",
+        "cta": "Contact for Enterprise"
+    }
+]
+
+RU_PRICING_TITLE = "Выберите точку старта"
+RU_PRICING_SUBTITLE = "Реальные сценарии для реального бизнеса - выберите что подходит вашей стадии"
+RU_PRICING_GUARANTEE = "Гарантия возврата денег 30 дней. Если не улучшит качество лидов, оставьте систему себе и получите полный возврат. Без вопросов."
+
+RU_PRICING_PLANS = [
+    {
+        "name": "Старт",
+        "price": "7,500₽",
+        "billing": "единоразово",
+        "desc": "Протестируйте концепт на своей аудитории",
+        "featured": false,
+        "story_title": "Идеально для: Соло-предпринимателей",
+        "story_desc": "Хотите протестировать, превзойдёт ли это ваш текущий лид-магнит. Ожидайте в 2-4 раза больше вовлеченных лидов.",
+        "features": [
+            "Готовые шаблоны вопросов",
+            "Базовая настройка бренда",
+            "Интеграция с Google Sheets",
+            "Email доставка",
+            "Поддержка 7 дней по email",
+            "Гарантия возврата 30 дней"
+        ],
+        "limitations": "Лимит 100 лидов/месяц",
+        "cta": "Начать тестирование"
+    },
+    {
+        "name": "Профессиональный",
+        "price": "22,000-37,000₽",
+        "billing": "единоразовая настройка",
+        "desc": "Полная кастомизация бренда",
+        "featured": true,
+        "story_title": "Идеально для: Опытных коучей и агентств",
+        "story_desc": "Нужна идеальная интеграция в ваш бренд и сбор детальной информации о лидах. Ожидайте улучшение качества лидов на 40-60%.",
+        "features": [
+            "Полная настройка бренда (цвета, шрифты, tone of voice)",
+            "Кастомные потоки вопросов",
+            "Google Sheets + продвинутые интеграции",
+            "Дашборд аналитики",
+            "Прямая поддержка от основателя",
+            "Консультационный звонок по настройке"
+        ],
+        "limitations": "До 500 лидов/месяц",
+        "cta": "Выбрать Профессиональный"
+    },
+    {
+        "name": "Энтерпрайз",
+        "price": "75,000₽+",
+        "billing": "индивидуально",
+        "desc": "Полная автоматизация на масштабе",
+        "featured": false,
+        "story_title": "Идеально для: Высоконагруженных бизнесов",
+        "story_desc": "Обрабатываете 200+ лидов в день. Нужна автоматизация CRM, кастомные последовательности и продвинутые возможности.",
+        "features": [
+            "Всё из Профессионального",
+            "Безлимитный объем лидов",
+            "Интеграция CRM (HubSpot, GHL, Airtable)",
+            "Кастомное обучение AI на ваших данных",
+            "Автоматизированные последовательности",
+            "Продвинутая аналитика и отчётность",
+            "White-label опции"
+        ],
+        "limitations": "Нет",
+        "cta": "Связаться по Энтерпрайз"
+    }
+]
+
+---
+РЕЖИССУРА: Pricing cards с 3D tilt-эффектом при hover. Featured план (Professional) - немного больше, поднят выше, glowing border. Toggle переключатель "Show ROI Calculator" - открывает калькулятор: "Введите ваш текущий % конверсии лидов → Посмотрите потенциальный ROI". Comparison table кнопка внизу - открывает детальную таблицу сравнения фич. На мобильных - horizontal scroll с snap, featured по центру.
+---
+
+===============================
+SOCIAL PROOF - REMOVED (NO FAKE TESTIMONIALS)
+===============================
+
+Не добавляем секцию testimonials пока нет реальных отзывов.
+Лучше честно без них, чем с выдуманными.
+
+===============================
+FAQ SECTION (EN/RU)
+===============================
+
+EN_FAQ_TITLE = "Honest Questions, Honest Answers"
+EN_FAQ_SUBTITLE = "What you really want to know"
+
+EN_FAQS = [
+    {
+        "q": "Is this actually working or just theory?",
+        "a": "Both. The technology works - GPT can analyze answers and create personalized content. We're in beta testing with ~15 businesses to prove the conversion improvements. Early results are promising but we're still gathering data."
+    },
+    {
+        "q": "How long does setup actually take?",
+        "a": "Starter: You can launch in 1-2 hours with templates. Professional: 3-5 hours including customization and CRM integration. Enterprise: 1-2 weeks for full custom implementation. We do most of the heavy lifting."
+    },
+    {
+        "q": "What if people don't fill out the questions?",
+        "a": "Valid concern. That's why the value exchange matters. In testing, 30-40% of visitors who start actually complete it (when value is clear). Those who do are WAY more qualified than typical leads. Quality over quantity."
+    },
+    {
+        "q": "Can I see a working example?",
+        "a": "Yes. Click the demo section above to interact with a live example. You can also request a custom demo for your industry."
+    },
+    {
+        "q": "What's the catch with the guarantee?",
+        "a": "No catch. If after 30 days you don't see improved lead quality, tell us and we'll refund you. You keep the system. We're confident it works, and we're new enough to care deeply about every customer."
+    },
+    {
+        "q": "Do I need technical skills?",
+        "a": "Starter: No, it's plug-and-play. Professional: We handle technical setup. Enterprise: Our team does everything. You just need to answer questions about your business and review the output."
+    }
+]
+
+RU_FAQ_TITLE = "Честные вопросы, честные ответы"
+RU_FAQ_SUBTITLE = "То, что вы действительно хотите знать"
+
+RU_FAQS = [
+    {
+        "q": "Это реально работает или просто теория?",
+        "a": "И то, и то. Технология работает - GPT может анализировать ответы и создавать персонализированный контент. Мы в бета-тестировании с ~15 бизнесами, чтобы доказать улучшение конверсии. Ранние результаты многообещающие, но мы всё ещё собираем данные."
+    },
+    {
+        "q": "Сколько реально занимает настройка?",
+        "a": "Старт: Можете запустить за 1-2 часа с шаблонами. Профессиональный: 3-5 часов включая кастомизацию и интеграцию CRM. Энтерпрайз: 1-2 недели для полной кастомной имплементации. Мы делаем большую часть тяжёлой работы."
+    },
+    {
+        "q": "Что если люди не будут заполнять вопросы?",
+        "a": "Валидное беспокойство. Поэтому важен обмен ценностью. В тестировании 30-40% посетителей, которые начинают, действительно завершают (когда ценность понятна). Те кто завершает - НАМНОГО более квалифицированы чем обычные лиды. Качество важнее количества."
+    },
+    {
+        "q": "Могу посмотреть рабочий пример?",
+        "a": "Да. Кликните на секцию демо выше для взаимодействия с живым примером. Можете также запросить кастомное демо для вашей индустрии."
+    },
+    {
+        "q": "В чём подвох с гарантией?",
+        "a": "Нет подвоха. Если после 30 дней не видите улучшения качества лидов, скажите нам и мы вернём деньги. Систему оставите себе. Мы уверены что работает, и мы достаточно новые чтобы глубоко заботиться о каждом клиенте."
+    },
+    {
+        "q": "Нужны технические навыки?",
+        "a": "Старт: Нет, plug-and-play. Профессиональный: Мы обрабатываем техническую настройку. Энтерпрайз: Наша команда делает всё. Вам просто нужно отвечать на вопросы о вашем бизнесе и проверять результат."
+    }
+]
+
+---
+РЕЖИССУРА: Accordion с smooth expand/collapse. При открытии - лёгкая анимация (fade + height transition). Иконка "+" превращается в "-". Добавить search bar вверху "Поиск по FAQ" с live-фильтрацией. Для длинных ответов - "Read more" expand. Справа можно добавить "Still have questions? Ask directly" CTA с микро-формой.
+---
+
+===============================
+CONTACT SECTION (EN/RU) - HONEST VERSION
+===============================
+
+EN_CONTACT_TITLE = "Ready to Test This?"
+EN_CONTACT_SUBTITLE = "Let's talk about your specific situation"
+EN_CONTACT_CTA = "Start Conversation on WhatsApp"
+EN_CONTACT_RESPONSE = "We typically respond within 4-8 hours (sometimes faster)"
+EN_CONTACT_GUARANTEE = "30-day guarantee: Try it risk-free. If it doesn't deliver, get refunded and keep the system."
+EN_CONTACT_NOTE = "We're a small team actively building this. You'll talk directly to founders who care about your success."
+
+RU_CONTACT_TITLE = "Готовы протестировать?"
+RU_CONTACT_SUBTITLE = "Давайте обсудим вашу конкретную ситуацию"
+RU_CONTACT_CTA = "Начать разговор в WhatsApp"
+RU_CONTACT_RESPONSE = "Обычно отвечаем в течение 4-8 часов (иногда быстрее)"
+RU_CONTACT_GUARANTEE = "Гарантия 30 дней: Попробуйте без риска. Если не сработает, получите возврат и оставьте систему себе."
+RU_CONTACT_NOTE = "Мы маленькая команда, активно строящая это. Вы будете общаться напрямую с основателями, которым важен ваш успех."
+
+---
+РЕЖИССУРА: CTA секция с градиентным фоном (subtle, не агрессивный). WhatsApp кнопка большая, зелёная, с иконкой WhatsApp. Hover-эффект: лёгкое покачивание + shadow increase. Добавить "What happens next?" timeline: 1) Вы пишете → 2) Мы отвечаем 4-8ч → 3) Обсуждаем ваш кейс → 4) Вы решаете. Можно добавить live indicator "🟢 Usually online" если действительно онлайн часто.
+---
+
+===============================
+FOOTER (EN/RU)
+===============================
+
+EN_FOOTER_TAGLINE = "Sales intelligence that actually works"
+EN_FOOTER_COPYRIGHT = "© 2025 SystemHustle. Built with honesty."
+EN_FOOTER_LINKS = ["Privacy Policy", "Terms of Service", "Contact"]
+EN_FOOTER_SOCIAL = "Follow the journey: [Twitter/X] [LinkedIn]"
+
+RU_FOOTER_TAGLINE = "Интеллект продаж который действительно работает"
+RU_FOOTER_COPYRIGHT = "© 2025 SystemHustle. Создано честно."
+RU_FOOTER_LINKS = ["Политика конфиденциальности", "Условия использования", "Контакты"]
+RU_FOOTER_SOCIAL = "Следите за путешествием: [Twitter/X] [LinkedIn]"
+
+---
+РЕЖИССУРА: Минималистичный footer, тёмный фон. Ссылки с hover underline эффектом. Социальные иконки монохромные с colour fill на hover. Можно добавить newsletter signup: "Get updates on development" (но только если реально будете отправлять updates). "Made with ❤️ and Claude Code" badge опционально.
+---
+
+===============================
+WHATSAPP MESSAGES
+===============================
+
+EN_WHATSAPP_MESSAGE = "Hi! I'm interested in the SystemHustle lead intelligence system. I'd like to discuss how it might work for my [your business type]. Can we chat?"
+
+RU_WHATSAPP_MESSAGE = "Привет! Интересует система lead intelligence от SystemHustle. Хотел бы обсудить как это может работать для моего [ваш тип бизнеса]. Можем пообщаться?"
+
+===============================
+DIRECTOR'S NOTES - ОБЩАЯ РЕЖИССУРА
+===============================
+
+ОБЩИЕ ПРИНЦИПЫ АНИМАЦИИ:
+- Все анимации должны быть subtle и не раздражающие
+- Используйте ease-in-out transitions (не linear)
+- Scroll-triggered animations появляются когда элемент на 20% виден
+- Максимальная длительность анимации: 0.6s для больших элементов, 0.3s для мелких
+- Prefers-reduced-motion: отключайте анимации для accessibility
+
+ИНТЕРАКТИВНОСТЬ:
+- Все CTA кнопки: hover scale 1.05, shadow increase, 0.2s transition
+- Карточки: hover lift (translateY -5px) + shadow
+- Формы: focus состояния с border-color transition
+- Микро-интеракции везде где возможно (но не перебор)
+
+ЦВЕТОВАЯ СХЕМА:
+- Светлая тема по умолчанию
+- Тёмная тема опционально (toggle в nav)
+- Акцентный цвет: выберите один яркий (синий/зелёный/фиолетовый)
+- Градиенты: используйте для hero и CTA секций
+
+ТИПОГРАФИКА:
+- Заголовки: жирные, крупные, короткие
+- Тело: комфортный размер для чтения (16-18px)
+- Line-height: 1.6-1.8 для читаемости
+- Max-width для текста: 65-75 символов
+
+АДАПТИВНОСТЬ:
+- Mobile-first подход
+- Breakpoints: 640px (mobile), 768px (tablet), 1024px (desktop), 1280px (xl)
+- Touch-friendly кнопки на мобильных (min 44x44px)
+- Swipe gestures где уместно (pricing cards, testimonials)
+
+ПРОИЗВОДИТЕЛЬНОСТЬ:
+- Lazy loading для изображений
+- Defer non-critical JS
+- Минимизировать animations на mobile для battery
+- Использовать CSS transforms вместо position для анимаций
+
+ЧЕСТНОСТЬ В ДИЗАЙНЕ:
+- Disclaimer для всех статистик должен быть видимым
+- "Beta" badges где уместно
+- Нет fake countdown таймеров
+- Реальные testimonials с пометками verified/not verified
+- Скриншоты из реального продукта (не mockups если можно)
+
+ПРИЗЫВ К ДЕЙСТВИЮ:
+- Основной CTA: WhatsApp (зелёная кнопка с иконкой)
+- Вторичный CTA: "See Demo" или "Learn More"
+- CTA повторяется каждые 2-3 секции
+- Sticky CTA bar опционально на mobile при скролле вниз
+
+ЭМОЦИОНАЛЬНЫЙ ТОНУС:
+- Честный и прямой
+- Немного дерзкий (challenge status quo)
+- Эмпатичный (понимаем боль)
+- Оптимистичный но реалистичный
+- Без corporate BS
+
+===============================
+ТЕХНИЧЕСКИЕ ДЕТАЛИ ДЛЯ РАЗРАБОТКИ
+===============================
+
+СТРУКТУРА ФАЙЛА:
+- Single HTML file как запрошено
+- Встроенный CSS в <style> блоке
+- Встроенный JS в <script> блоке (или ссылка на CDN для библиотек)
+- Все ассеты инлайн или CDN (никаких локальных файлов)
+
+РЕКОМЕНДУЕМЫЕ БИБЛИОТЕКИ:
+- AOS (Animate On Scroll): https://michalsnik.github.io/aos/
+- Vanilla JS для интерактивности (можно Alpine.js для реактивности)
+- Tailwind CSS CDN для быстрой стилизации (опционально)
+- Font: Inter или Manrope из Google Fonts
+
+ЯЗЫКОВОЕ ПЕРЕКЛЮЧЕНИЕ:
+- Toggle в navigation
+- Сохранение выбора в localStorage
+- Показывать/скрывать контент через data-lang атрибуты
+- URL parameter ?lang=ru или ?lang=en опционально
+
+МОБИЛЬНАЯ НАВИГАЦИЯ:
+- Hamburger menu для мобильных
+- Slide-in side panel или full-screen overlay
+- Smooth scroll к секциям
+- Автозакрытие при клике на пункт
+
+ОТСЛЕЖИВАНИЕ:
+- Подготовить data-attributes для GA4 events
+- CTA clicks tracking
+- Scroll depth tracking
+- Time on page
+- Language preference
+
+WHATSAPP ИНТЕГРАЦИЯ:
+- Предзаполненное сообщение через wa.me/[номер]?text=[message]
+- Номер телефона в формате international (без +)
+- URL-encode сообщения
+- Открывается в новом окне/табе
+
+===============================
+КОНЕЦ ФАЙЛА
+===============================

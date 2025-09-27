@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Lead-Magnet - SystemHustle</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --surface: #ffffff;
+            --surface-alt: #f8fafc;
+            --border: #e2e8f0;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --text-light: #94a3b8;
+            --radius: 12px;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--surface);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .gradient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .lang-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .typing-container {
+            background: var(--secondary);
+            border-radius: var(--radius);
+            padding: 2rem;
+            color: white;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .typing-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .control.red { background: #ff5f56; }
+        .control.yellow { background: #ffbd2e; }
+        .control.green { background: #27ca3f; }
+
+        .typing-content {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .typing-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .prompt {
+            color: #10b981;
+            margin-right: 0.5rem;
+        }
+
+        .typed-text {
+            color: #e2e8f0;
+        }
+
+        .cursor {
+            background: #10b981;
+            width: 2px;
+            height: 1.2em;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .character-intro {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: var(--radius);
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1rem;
+        }
+
+        .character-avatar {
+            flex-shrink: 0;
+        }
+
+        .avatar-circle {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .character-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .character-info p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .story-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .story-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .story-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--surface-alt);
+            border-radius: var(--radius);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-4px) scale(1.07);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        @media (max-width: 968px) {
+            .awakening-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .transformation-preview {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .typing-container {
+                padding: 1.5rem;
+                order: -1;
+                margin-bottom: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .step-item::before {
+                display: none;
+            }
+
+            .demo-steps {
+                gap: 1.5rem;
+            }
+
+            .insights-container {
+                gap: 1rem;
+            }
+
+            .insight-card {
+                padding: 1.5rem;
+            }
+
+            .character-intro {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .avatar-circle {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .character-info h3 {
+                font-size: 1.25rem;
+            }
+
+            .character-info p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .typing-container {
+                padding: 1rem;
+            }
+
+            .typing-content {
+                font-size: 0.8rem;
+            }
+        }
+
+        .awakening-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .insights-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .insight-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .insight-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .insight-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .insight-card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .transformation-preview {
+            background: var(--surface);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            position: sticky;
+            top: 100px;
+        }
+
+        .transformation-preview h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            background: var(--surface-alt);
+            transition: all 0.3s ease;
+        }
+
+        .metric.highlighted {
+            background: linear-gradient(135deg, var(--success) 0%, #0ea5e9 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            margin: 1rem 0;
+            opacity: 0.6;
+        }
+
+        .demo-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: 3rem;
+            top: 100%;
+            width: 2px;
+            height: 2rem;
+            background: var(--border);
+        }
+
+        .step-item:last-child::before {
+            display: none;
+        }
+
+        .step-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .step-content p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .step-example {
+            background: var(--surface-alt);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--success);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .awakening-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .transformation-preview {
+                position: static;
+            }
+
+            .step-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .step-item::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">SystemHustle</div>
+            <ul class="nav-links">
+                <li><a href="#hero" data-en="Home" data-ru="Главная">Главная</a></li>
+                <li><a href="#story" data-en="Story" data-ru="История">История</a></li>
+                <li><a href="#demo" data-en="Demo" data-ru="Демо">Демо</a></li>
+                <li><a href="#pricing" data-en="Pricing" data-ru="Тарифы">Тарифы</a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="gradient-bg"></div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-text">
+                    <h1 data-en="AI Lead-Magnet for Coaches & Info-Entrepreneurs" data-ru="AI Lead-Магнит для коучей и инфо-предпринимателей">AI Lead-Магнит для коучей и инфо-предпринимателей</h1>
+                    <p class="subtitle" data-en="Transform your expertise into an automated lead generation system that works 24/7. Get high-quality leads while you sleep." data-ru="Превратите свою экспертизу в автоматическую систему генерации лидов, которая работает 24/7. Получайте качественных клиентов даже во сне.">Превратите свою экспертизу в автоматическую систему генерации лидов, которая работает 24/7. Получайте качественных клиентов даже во сне.</p>
+                    <a href="https://wa.me/79185434122?text=Привет!%20Хочу%20узнать%20больше%20об%20AI%20Lead-Магните" class="cta-button" data-en="Get Started with WhatsApp" data-ru="Начать через WhatsApp">
+                        💬 Начать через WhatsApp
+                    </a>
+                </div>
+                <div class="typing-container" data-aos="fade-left" data-aos-delay="200">
+                    <div class="typing-header">
+                        <div class="window-controls">
+                            <div class="control red"></div>
+                            <div class="control yellow"></div>
+                            <div class="control green"></div>
+                        </div>
+                        <span style="color: #94a3b8; font-size: 0.8rem;">AI Lead-Magnet.exe</span>
+                    </div>
+                    <div class="typing-content">
+                        <div class="typing-line">
+                            <span class="prompt">$</span>
+                            <span class="typed-text" id="typed-1"></span>
+                            <div class="cursor" id="cursor-1"></div>
+                        </div>
+                        <div class="typing-line" style="display: none;" id="line-2">
+                            <span class="prompt">></span>
+                            <span class="typed-text" id="typed-2"></span>
+                            <div class="cursor" id="cursor-2"></div>
+                        </div>
+                        <div class="typing-line" style="display: none;" id="line-3">
+                            <span class="prompt">💬</span>
+                            <span class="typed-text" id="typed-3"></span>
+                            <div class="cursor" id="cursor-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-en="My Story" data-ru="Моя история">Моя история</h2>
+                <p data-en="How I discovered the power of AI-driven lead generation" data-ru="Как я открыл силу AI-генерации лидов">Как я открыл силу AI-генерации лидов</p>
+            </div>
+            <div class="story-grid">
+                <div class="character-intro" data-aos="fade-up" data-aos-delay="50">
+                    <div class="character-avatar">
+                        <div class="avatar-circle">Д</div>
+                    </div>
+                    <div class="character-info">
+                        <h3 data-en="Meet Sarah - Personal Development Coach" data-ru="Знакомьтесь — Дарья, коуч по личной эффективности">Знакомьтесь — Дарья, коуч по личной эффективности</h3>
+                        <p data-en="Sarah runs a high-ticket coaching program. She helps ambitious professionals break through their income ceiling. Her program costs $15,000. But she has a problem that's costing her 6 figures yearly." data-ru="Дарья ведет премиальную программу коучинга. Помогает амбициозным профессионалам пробить свой потолок дохода. Её программа стоит 1,000,000₽. Но у неё есть проблема, которая обходится ей в миллионы рублей ежегодно.">Дарья ведет премиальную программу коучинга. Помогает амбициозным профессионалам пробить свой потолок дохода. Её программа стоит 1,000,000₽. Но у неё есть проблема, которая обходится ей в миллионы рублей ежегодно.</p>
+                    </div>
+                </div>
+
+                <div class="story-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 data-en="The Problem" data-ru="Проблема">Проблема</h3>
+                    <p data-en="Pays $80+ per lead just to get their email, has 3,000 contacts but knows nothing about their real situation, sends generic follow-ups that feel robotic." data-ru="Платит 6,000₽+ за лид, получая только email. Имеет 3,000 контактов, но ничего не знает об их реальной ситуации. Отправляет шаблонные сообщения, которые воспринимаются как боты.">Платит 6,000₽+ за лид, получая только email. Имеет 3,000 контактов, но ничего не знает об их реальной ситуации. Отправляет шаблонные сообщения, которые воспринимаются как боты.</p>
+                </div>
+                <div class="story-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 data-en="The Discovery" data-ru="Решение, которое я нашёл">Решение, которое я нашёл</h3>
+                    <p data-en="I realized that AI could automate the entire lead qualification process, working around the clock to identify and engage potential clients." data-ru="Я понял, что можно создать систему, которая заставляет лидов добровольно рассказывать о себе всё, взамен получая огромную ценность — персонализированную стратегию.">Я понял, что можно создать систему, которая заставляет лидов добровольно рассказывать о себе всё, взамен получая огромную ценность — персонализированную стратегию.</p>
+                </div>
+                <div class="story-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 data-en="The Results" data-ru="Результат">Результат</h3>
+                    <p data-en="98% of her leads never even book a call. The 2% who do often aren't qualified." data-ru="Результат: 98% её лидов даже не записываются на звонок. Те 2%, кто записываются, часто не квалифицированы. Теперь я помогаю коучам и инфо-предпринимателям внедрить эту систему.">Результат: 98% её лидов даже не записываются на звонок. Те 2%, кто записываются, часто не квалифицированы. Теперь я помогаю коучам и инфо-предпринимателям внедрить эту систему.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awakening" class="section" style="background: var(--surface-alt);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-en="What If There Was a Different Way?" data-ru="А что если есть другой способ?">А что если есть другой способ?</h2>
+                <p data-en="What if you could know everything about a lead before the first conversation?" data-ru="Что если вы могли бы знать всё о лиде до первого разговора?">Что если вы могли бы знать всё о лиде до первого разговора?</p>
+            </div>
+
+            <div class="awakening-content">
+                <div class="insights-container" data-aos="fade-up">
+                    <div class="insight-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="insight-number">1</div>
+                        <h3 data-en="The Question" data-ru="Вопрос">Вопрос</h3>
+                        <p data-en="What if visitors answered 12-15 deep questions about their situation, goals, and challenges?" data-ru="Что если посетители отвечали бы на 12-15 глубоких вопросов о своей ситуации, целях и вызовах?">Что если посетители отвечали бы на 12-15 глубоких вопросов о своей ситуации, целях и вызовах?</p>
+                    </div>
+
+                    <div class="insight-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="insight-number">2</div>
+                        <h3 data-en="The Challenge" data-ru="Проблема">Проблема</h3>
+                        <p data-en="Normally they'd bounce immediately. Who has time for 15 questions?" data-ru="Обычно они сразу уходят. У кого есть время на 15 вопросов?">Обычно они сразу уходят. У кого есть время на 15 вопросов?</p>
+                    </div>
+
+                    <div class="insight-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="insight-number">3</div>
+                        <h3 data-en="The Solution" data-ru="Решение">Решение</h3>
+                        <p data-en="But what if they got massive value in return? A personalized strategy worth $300-500?" data-ru="Но что если взамен они получали огромную ценность? Персональную стратегию стоимостью 20,000-35,000₽?">Но что если взамен они получали огромную ценность? Персональную стратегию стоимостью 20,000-35,000₽?</p>
+                    </div>
+
+                    <div class="insight-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="insight-number">4</div>
+                        <h3 data-en="The Magic" data-ru="Магия">Магия</h3>
+                        <p data-en="Now you know their income, goals, pain points, budget, and urgency BEFORE the first call." data-ru="Теперь вы знаете их доход, цели, боли, бюджет и срочность ДО первого звонка.">Теперь вы знаете их доход, цели, боли, бюджет и срочность ДО первого звонка.</p>
+                    </div>
+
+                    <div class="insight-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="insight-number">5</div>
+                        <h3 data-en="The Result" data-ru="Результат">Результат</h3>
+                        <p data-en="Your follow-ups are hyper-personalized. Conversion could potentially improve 5-8x." data-ru="Ваши последующие сообщения гиперперсональны. Конверсия потенциально может вырасти в 5-8 раз.">Ваши последующие сообщения гиперперсональны. Конверсия потенциально может вырасти в 5-8 раз.</p>
+                    </div>
+                </div>
+
+                <div class="transformation-preview" data-aos="fade-left" data-aos-delay="300">
+                    <h3 data-en="The Transformation" data-ru="Трансформация">Трансформация</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">2-3%</div>
+                            <div class="metric-label" data-en="Before: Conversion Rate" data-ru="До: Конверсия">До: Конверсия</div>
+                            <div class="arrow">↓</div>
+                        </div>
+                        <div class="metric highlighted">
+                            <div class="metric-value">15-20%</div>
+                            <div class="metric-label" data-en="After: Qualified Calls" data-ru="После: Квалифицированные звонки">После: Квалифицированные звонки</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-en="Here's How the Magic Works" data-ru="Вот как работает магия">Here's How the Magic Works</h2>
+                <p data-en="Step-by-step breakdown of the customer intelligence system" data-ru="Пошаговое описание системы клиентской аналитики">Step-by-step breakdown of the customer intelligence system</p>
+            </div>
+
+            <div class="demo-steps">
+                <div class="step-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-icon">👤</div>
+                    <div class="step-content">
+                        <h3 data-en="Visitor Arrives" data-ru="Посетитель приходит">Посетитель приходит</h3>
+                        <p data-en="Someone visits your site and sees your Custom-GPT widget promising real, personalized value." data-ru="Кто-то заходит на ваш сайт и видит Custom-GPT виджет, обещающий реальную персональную ценность.">Кто-то заходит на ваш сайт и видит Custom-GPT виджет, обещающий реальную персональную ценность.</p>
+                        <div class="step-example">
+                            <span data-en="Example: 'Get Your Personal Growth Roadmap - Free 15-min AI Analysis'" data-ru="Пример: 'Получите свою Карту Личного Роста - Бесплатный 15-мин AI-анализ'">Пример: "Получите свою Карту Личного Роста - Бесплатный 15-мин AI-анализ"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-icon">❓</div>
+                    <div class="step-content">
+                        <h3 data-en="Deep Discovery" data-ru="Глубокое исследование">Глубокое исследование</h3>
+                        <p data-en="They answer 12-15 strategic questions about their situation, goals, and obstacles." data-ru="Они отвечают на 12-15 стратегических вопросов о своей ситуации, целях и препятствиях.">Они отвечают на 12-15 стратегических вопросов о своей ситуации, целях и препятствиях.</p>
+                        <div class="step-example">
+                            <span data-en="Example: 'What's your current annual income? What's blocking you from 2x growth?'" data-ru="Пример: 'Какой ваш текущий годовой доход? Что блокирует ваш рост в 2 раза?'">Пример: "Какой ваш текущий годовой доход? Что блокирует ваш рост в 2 раза?"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-icon">🧠</div>
+                    <div class="step-content">
+                        <h3 data-en="AI Analysis" data-ru="AI-анализ">AI-анализ</h3>
+                        <p data-en="Custom-GPT processes their answers and generates a truly personalized strategy document." data-ru="Custom-GPT обрабатывает ответы и генерирует действительно персонализированный документ-стратегию.">Custom-GPT обрабатывает ответы и генерирует действительно персонализированный документ-стратегию.</p>
+                        <div class="step-example">
+                            <span data-en="Example: 'Based on your $80K income and leadership challenges, here are 4 specific paths...'" data-ru="Пример: 'Основываясь на вашем доходе 6М₽ и вызовах в лидерстве, вот 4 конкретных пути...'">Пример: "Основываясь на вашем доходе 6М₽ и вызовах в лидерстве, вот 4 конкретных пути..."</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-icon">📄</div>
+                    <div class="step-content">
+                        <h3 data-en="Value Delivery" data-ru="Доставка ценности">Доставка ценности</h3>
+                        <p data-en="They receive a detailed strategy guide worth hundreds - customized to their exact situation." data-ru="Они получают детальный гайд-стратегию стоимостью в десятки тысяч - кастомизированный под их точную ситуацию.">Они получают детальный гайд-стратегию стоимостью в десятки тысяч - кастомизированный под их точную ситуацию.</p>
+                        <div class="step-example">
+                            <span data-en="Example: 'Your Personal Income Breakthrough Blueprint - 8-12 pages of custom strategies'" data-ru="Пример: 'Ваш План Прорыва в Доходе - 8-12 страниц кастомных стратегий'">Пример: "Ваш План Прорыва в Доходе - 8-12 страниц кастомных стратегий"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="step-icon">📱</div>
+                    <div class="step-content">
+                        <h3 data-en="Natural Opt-In" data-ru="Естественная подписка">Естественная подписка</h3>
+                        <p data-en="To get their personalized guide, they willingly provide contact info." data-ru="Чтобы получить персональный гайд, они добровольно оставляют контакт.">Чтобы получить персональный гайд, они добровольно оставляют контакт.</p>
+                        <div class="step-example">
+                            <span data-en="Example: 'Enter your WhatsApp/email to receive your personalized blueprint'" data-ru="Пример: 'Введите WhatsApp/email для получения вашего плана'">Пример: "Введите WhatsApp/email для получения вашего плана"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="step-icon">💎</div>
+                    <div class="step-content">
+                        <h3 data-en="Complete Intelligence" data-ru="Полная информация">Полная информация</h3>
+                        <p data-en="You now have a rich profile: income, goals, obstacles, urgency, psychology." data-ru="У вас теперь богатый профиль: доход, цели, препятствия, срочность, психология.">У вас теперь богатый профиль: доход, цели, препятствия, срочность, психология.</p>
+                        <div class="step-example">
+                            <span data-en="Example: 'Income: $80K, Goal: $200K, Obstacle: Team leadership, Urgency: 6 months'" data-ru="Пример: 'Доход: 6М₽, Цель: 15М₽, Препятствие: Лидерство команды, Срочность: 6 месяцев'">Пример: "Доход: 6М₽, Цель: 15М₽, Препятствие: Лидерство команды, Срочность: 6 месяцев"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section" style="background: var(--surface-alt);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-en="Why Choose AI Lead-Magnet?" data-ru="Почему AI Lead-Магнит?">Почему AI Lead-Магнит?</h2>
+                <p data-en="Built specifically for coaches and info-entrepreneurs who want to scale without losing personal touch" data-ru="Создан специально для коучей и инфо-предпринимателей, которые хотят масштабироваться, не теряя личного подхода">Создан специально для коучей и инфо-предпринимателей, которые хотят масштабироваться, не теряя личного подхода</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-icon">🤖</div>
+                    <h3 data-en="24/7 Automation" data-ru="Автоматизация 24/7">Автоматизация 24/7</h3>
+                    <p data-en="Your AI works while you sleep, consistently generating and qualifying leads across multiple channels." data-ru="Ваш ИИ работает, пока вы спите, последовательно генерируя и квалифицируя лидов по множественным каналам.">Ваш ИИ работает, пока вы спите, последовательно генерируя и квалифицируя лидов по множественным каналам.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 data-en="Smart Targeting" data-ru="Умное таргетирование">Умное таргетирование</h3>
+                    <p data-en="AI identifies your ideal clients based on behavior patterns, interests, and engagement levels." data-ru="ИИ определяет ваших идеальных клиентов на основе поведенческих паттернов, интересов и уровня вовлеченности.">ИИ определяет ваших идеальных клиентов на основе поведенческих паттернов, интересов и уровня вовлеченности.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-icon">📈</div>
+                    <h3 data-en="Scalable Growth" data-ru="Масштабируемый рост">Масштабируемый рост</h3>
+                    <p data-en="Start small and grow infinitely. The system adapts to your business size and goals." data-ru="Начните с малого и растите бесконечно. Система адаптируется к размеру вашего бизнеса и целям.">Начните с малого и растите бесконечно. Система адаптируется к размеру вашего бизнеса и целям.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-en="Choose Your Plan" data-ru="Выберите тариф">Выберите тариф</h2>
+                <p data-en="Transparent pricing with no hidden fees. Start small, scale as you grow." data-ru="Прозрачные цены без скрытых комиссий. Начните с малого, масштабируйтесь по мере роста.">Прозрачные цены без скрытых комиссий. Начните с малого, масштабируйтесь по мере роста.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 data-en="Starter" data-ru="Стартер">Starter</h3>
+                    <div class="price">$99<span class="price-period" data-en="/month" data-ru="/месяц">/month</span></div>
+                    <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;" data-en="$99 for first 5 people - price increases after!" data-ru="$99 для первых 5 человек - цена вырастет!">$99 for first 5 people - price increases after!</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" data-en="Perfect for testing the concept" data-ru="Идеально для тестирования концепции">Perfect for testing the concept</p>
+                    <ul class="features-list">
+                        <li data-en="Pre-built question templates" data-ru="Готовые шаблоны вопросов">Pre-built question templates</li>
+                        <li data-en="Basic customization" data-ru="Базовая настройка">Basic customization</li>
+                        <li data-en="Google Sheets integration" data-ru="Интеграция с Google Sheets">Google Sheets integration</li>
+                        <li data-en="Email delivery" data-ru="Доставка по email">Email delivery</li>
+                        <li data-en="30-day guarantee" data-ru="Гарантия 30 дней">30-day guarantee</li>
+                    </ul>
+                    <a href="https://wa.me/79185434122?text=Хочу%20тариф%20Стартер" class="cta-button" data-en="Start Free" data-ru="Начать бесплатно">Start Free</a>
+                </div>
+                <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                    <h3 data-en="Professional" data-ru="Профессиональный">Professional</h3>
+                    <div class="price">$299<span class="price-period" data-en="/month" data-ru="/месяц">/month</span></div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;" data-en="For growing coaching businesses" data-ru="Для растущего коучингового бизнеса">For growing coaching businesses</p>
+                    <ul class="features-list">
+                        <li data-en="Everything in Starter" data-ru="Всё из Starter">Everything in Starter</li>
+                        <li data-en="Advanced question flows" data-ru="Продвинутые цепочки вопросов">Advanced question flows</li>
+                        <li data-en="20+ CRM integrations (HubSpot, GHL, Airtable, etc.)" data-ru="20+ CRM интеграций (HubSpot, GHL, Airtable и др.)">20+ CRM integrations (HubSpot, GHL, Airtable, etc.)</li>
+                        <li data-en="Automated follow-up sequences" data-ru="Автоматические последовательности">Automated follow-up sequences</li>
+                        <li data-en="Priority support" data-ru="Приоритетная поддержка">Priority support</li>
+                    </ul>
+                    <a href="https://wa.me/79185434122?text=Хочу%20Профессиональный%20тариф" class="cta-button" data-en="Go Professional" data-ru="Выбрать Профессиональный">Go Professional</a>
+                </div>
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3 data-en="Enterprise" data-ru="Корпоративный">Корпоративный</h3>
+                    <div class="price" data-en="Custom" data-ru="По запросу">По запросу</div>
+                    <ul class="features-list">
+                        <li data-en="Custom AI training" data-ru="Кастомное обучение ИИ">Кастомное обучение ИИ</li>
+                        <li data-en="White-label solution" data-ru="White-label решение">White-label решение</li>
+                        <li data-en="Unlimited automation" data-ru="Безлимитная автоматизация">Безлимитная автоматизация</li>
+                        <li data-en="24/7 dedicated support" data-ru="Персональная поддержка 24/7">Персональная поддержка 24/7</li>
+                    </ul>
+                    <a href="https://wa.me/79185434122?text=Хочу%20узнать%20о%20корпоративном%20тарифе" class="cta-button" data-en="Contact Sales" data-ru="Связаться с продажами">Связаться с продажами</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p data-en="Ready to transform your coaching business with AI?" data-ru="Готовы трансформировать свой коучинговый бизнес с помощью ИИ?">Готовы трансформировать свой коучинговый бизнес с помощью ИИ?</p>
+            <a href="https://wa.me/79185434122?text=Привет!%20Хочу%20узнать%20больше%20об%20AI%20Lead-Магните" class="cta-button" data-en="Start Your AI Journey" data-ru="Начать AI-путешествие">💬 Начать AI-путешествие</a>
+            <div style="margin-top: 2rem;">
+                <p style="margin-bottom: 1rem;">
+                    <a href="mailto:leo@systemhustle.com" style="color: var(--primary); margin-right: 1.5rem; text-decoration: none;">📧 leo@systemhustle.com</a>
+                    <a href="https://t.me/leonidshvorob" style="color: var(--primary); margin-right: 1.5rem; text-decoration: none;" target="_blank">📱 Telegram</a>
+                    <a href="https://wa.me/79185434122" style="color: var(--primary); text-decoration: none;" target="_blank">💬 WhatsApp</a>
+                </p>
+                <p style="color: var(--text-light);" data-en="© 2025 SystemHustle. Empowering coaches with AI." data-ru="© 2025 SystemHustle. Расширяем возможности коучей с помощью ИИ.">© 2025 SystemHustle. Empowering coaches with AI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            const button = document.querySelector('.lang-toggle');
+            button.textContent = currentLang === 'ru' ? 'EN' : 'RU';
+
+            document.querySelectorAll('[data-en][data-ru]').forEach(element => {
+                element.textContent = element.getAttribute('data-' + currentLang);
+            });
+        }
+
+        function typeText(elementId, text, speed = 50) {
+            return new Promise((resolve) => {
+                const element = document.getElementById(elementId);
+                let i = 0;
+
+                function type() {
+                    if (i < text.length) {
+                        element.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    } else {
+                        resolve();
+                    }
+                }
+                type();
+            });
+        }
+
+        async function startTypingAnimation() {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            const currentLang = window.currentLang || 'ru';
+            const commands = {
+                en: {
+                    cmd1: 'initialize AI_Lead_Magnet --target=coaches',
+                    cmd2: 'Analyzing lead quality...',
+                    cmd3: 'Found 247 qualified leads ready for conversion!'
+                },
+                ru: {
+                    cmd1: 'initialize AI_Lead_Magnet --target=coaches',
+                    cmd2: 'Анализирую качество лидов...',
+                    cmd3: 'Найдено 247 квалифицированных лидов готовых к конверсии!'
+                }
+            };
+
+            await typeText('typed-1', commands[currentLang].cmd1, 80);
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            document.getElementById('cursor-1').style.display = 'none';
+            document.getElementById('line-2').style.display = 'flex';
+            await typeText('typed-2', commands[currentLang].cmd2, 60);
+            await new Promise(resolve => setTimeout(resolve, 800));
+
+            document.getElementById('cursor-2').style.display = 'none';
+            document.getElementById('line-3').style.display = 'flex';
+            await typeText('typed-3', commands[currentLang].cmd3, 70);
+        }
+
+        window.addEventListener('load', () => {
+            startTypingAnimation();
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

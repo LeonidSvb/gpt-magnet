@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Getting Surface Data. Start Getting Sales Intelligence.</title>
+    <meta name="description" content="Deploy a Custom-GPT that extracts detailed customer profiles, generates personalized value, and pre-qualifies your hottest prospects.">
+
+    <!-- CDN Libraries -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS with Advanced Animations -->
+    <style>
+        :root {
+            --color-bg: #ffffff;
+            --color-fg: #1e293b;
+            --color-accent: #2563eb;
+            --color-muted: #64748b;
+            --color-border: #e2e8f0;
+            --color-light: #f8fafc;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-danger: #ef4444;
+        }
+
+        /* Typing Effect */
+        .typing-text {
+            overflow: hidden;
+            border-right: 3px solid var(--color-accent);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--color-accent) }
+        }
+
+        /* Scroll Triggered Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Counter Animation */
+        .counter {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        /* Progress Bars */
+        .progress-bar {
+            width: 0%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-success));
+            border-radius: 5px;
+            transition: width 2s ease;
+        }
+
+        .progress-bar.animate {
+            width: var(--progress-width);
+        }
+
+        /* Before/After Slider */
+        .before-after-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 100%;
+            background: white;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Floating Elements */
+        .float-animation {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Message Bubble Animation */
+        .message-bubble {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            animation: bubbleAppear 0.6s ease forwards;
+        }
+
+        @keyframes bubbleAppear {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Hover Transforms */
+        .hover-scale:hover {
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        /* Interactive Tabs */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gradient Backgrounds */
+        .gradient-bg-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-bg-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .gradient-bg-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* CTA Buttons */
+        .btn-primary {
+            background: var(--color-accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Step Animation */
+        .step-item {
+            opacity: 0.3;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .step-item.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step-item.completed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Pulse Effect */
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
+            }
+        }
+
+        /* Enhanced Mobile Optimization */
+        @media (max-width: 768px) {
+            /* Better spacing on mobile */
+            body {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            /* Header mobile fixes */
+            .lang-toggle {
+                padding: 0.125rem;
+                gap: 0.125rem;
+            }
+
+            .lang-btn {
+                padding: 0.375rem 0.75rem;
+                font-size: 0.875rem;
+            }
+
+            /* Hero section mobile */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .typing-text {
+                font-size: 1rem !important;
+                white-space: normal !important;
+                border-right: none !important;
+            }
+
+            /* Button mobile fixes */
+            .btn-primary, .btn-secondary, .whatsapp-btn {
+                padding: 0.875rem 1.25rem;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Counter mobile */
+            .counter {
+                font-size: 2rem !important;
+            }
+
+            /* Pricing cards mobile */
+            .pricing-card {
+                padding: 1.5rem !important;
+            }
+
+            .price {
+                font-size: 2.5rem !important;
+            }
+
+            /* Features list mobile */
+            .features-list li {
+                font-size: 0.875rem;
+            }
+
+            /* Bonus section mobile */
+            .bg-green-50 {
+                padding: 1rem !important;
+            }
+
+            .bg-green-50 li {
+                font-size: 0.75rem !important;
+            }
+
+            /* Step timeline mobile */
+            .step-item {
+                font-size: 0.875rem;
+            }
+
+            /* Story cards mobile */
+            .story-card, .insight-card {
+                padding: 1.25rem !important;
+            }
+
+            /* Footer mobile */
+            .footer a {
+                font-size: 0.875rem;
+                display: block;
+                margin: 0.5rem 0;
+            }
+
+            /* Max width for readability */
+            .max-w-6xl, .max-w-4xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            /* Better touch targets */
+            a, button {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+
+            /* Reduce excessive padding on mobile */
+            .py-20 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+
+            /* Make cards stack better */
+            .grid {
+                gap: 1.5rem !important;
+            }
+
+            /* Fix overflow issues */
+            * {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            h1 {
+                font-size: 1.75rem !important;
+            }
+
+            .text-4xl {
+                font-size: 2rem !important;
+            }
+
+            .text-2xl {
+                font-size: 1.5rem !important;
+            }
+
+            .text-xl {
+                font-size: 1.125rem !important;
+            }
+
+            /* Tighter spacing */
+            .gap-6 {
+                gap: 1rem !important;
+            }
+
+            .gap-8 {
+                gap: 1.5rem !important;
+            }
+
+            .gap-12 {
+                gap: 2rem !important;
+            }
+
+            /* Pricing mobile */
+            .pricing-card {
+                padding: 1.25rem !important;
+            }
+        }
+    </style>
+</head>
+
+<body x-data="landingApp()" class="bg-white text-gray-900">
+    <!-- Top Navigation -->
+    <header class="sticky top-0 bg-white/90 backdrop-blur-sm border-b border-gray-200 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-gray-900">SystemHustle</div>
+
+                <div class="flex items-center gap-6">
+                    <!-- Language Toggle -->
+                    <div class="lang-toggle">
+                        <button @click="switchLang('en')"
+                                :class="{'active': currentLang === 'en'}"
+                                class="lang-btn">EN</button>
+                        <button @click="switchLang('ru')"
+                                :class="{'active': currentLang === 'ru'}"
+                                class="lang-btn">RU</button>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <nav class="hidden md:flex items-center gap-6">
+                        <a href="#story" class="text-gray-600 hover:text-blue-600 transition-colors" x-text="content[currentLang].nav.story"></a>
+                        <a href="#demo" class="text-gray-600 hover:text-blue-600 transition-colors" x-text="content[currentLang].nav.demo"></a>
+                        <a href="#pricing" class="btn-primary cursor-pointer" x-text="content[currentLang].nav.cta"></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Story Section -->
+    <section class="py-20 px-4 gradient-bg-1 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-left">
+                    <div class="text-sm uppercase tracking-wide opacity-80 mb-4" x-text="content[currentLang].hero.overline"></div>
+
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        <span x-text="content[currentLang].hero.h1"></span>
+                    </h1>
+
+                    <div class="text-xl mb-8 opacity-90 leading-relaxed">
+                        <div class="typing-text" x-text="content[currentLang].hero.typing"></div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a @click="scrollToContact" class="btn-primary bg-white text-blue-600 hover:bg-gray-100 cursor-pointer">
+                            <span x-text="content[currentLang].hero.primaryCta"></span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#story" class="btn-secondary border-white text-white hover:bg-white hover:text-blue-600">
+                            <span x-text="content[currentLang].hero.secondaryCta"></span>
+                        </a>
+                    </div>
+
+                    <!-- Scarcity Banner -->
+                    <div class="bg-yellow-400 text-yellow-900 px-4 py-2 rounded-lg inline-block pulse-glow">
+                        <span class="text-sm font-semibold" x-text="content[currentLang].hero.scarcity"></span>
+                    </div>
+                </div>
+
+                <div class="fade-in-right">
+                    <!-- Hero Illustration -->
+                    <div class="relative">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 float-animation">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🤖</div>
+                                <h3 class="text-xl font-semibold mb-2">AI Sales Intelligence</h3>
+                                <p class="opacity-80">Extract. Analyze. Convert.</p>
+
+                                <!-- Animated Metrics -->
+                                <div class="grid grid-cols-2 gap-4 mt-6">
+                                    <div class="text-center">
+                                        <div class="counter" x-text="metrics.conversion + '%'"></div>
+                                        <div class="text-sm opacity-75">Conversion Rate</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="counter" x-text="metrics.intelligence + '%'"></div>
+                                        <div class="text-sm opacity-75">Customer Intel</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Problem Section -->
+    <section id="story" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].story.title"></h2>
+                <p class="text-xl text-gray-600" x-text="content[currentLang].story.subtitle"></p>
+            </div>
+
+            <!-- Story Character -->
+            <div class="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-8 mb-12 fade-in-up">
+                <div class="flex items-start gap-6">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                        Д
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-3" x-text="content[currentLang].story.character.name"></h3>
+                        <p class="text-lg text-gray-700 mb-4" x-text="content[currentLang].story.character.description"></p>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <template x-for="problem in content[currentLang].story.character.problems" :key="problem">
+                                <div class="bg-white p-4 rounded-lg border-l-4 border-red-500">
+                                    <p class="text-gray-700 font-medium" x-text="problem"></p>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Pain -->
+            <div class="text-center fade-in-up">
+                <div class="inline-block bg-red-100 text-red-700 px-6 py-3 rounded-full font-semibold text-lg mb-8">
+                    <span x-text="content[currentLang].story.pain"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Awakening Section -->
+    <section class="py-20 px-4 bg-gradient-to-r from-blue-50 to-cyan-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].awakening.title"></h2>
+                <p class="text-xl text-gray-600" x-text="content[currentLang].awakening.subtitle"></p>
+            </div>
+
+            <!-- Progressive Reveal -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-left">
+                    <div class="space-y-6">
+                        <template x-for="(insight, index) in content[currentLang].awakening.insights" :key="index">
+                            <div class="bg-white p-6 rounded-lg shadow-lg hover-lift"
+                                 :class="{'opacity-30': index > revealedInsights}"
+                                 x-show="index <= revealedInsights">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold text-sm" x-text="index + 1"></div>
+                                    <div>
+                                        <h3 class="font-semibold mb-2" x-text="insight.title"></h3>
+                                        <p class="text-gray-600" x-text="insight.description"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <button @click="revealNext()"
+                            x-show="revealedInsights < content[currentLang].awakening.insights.length - 1"
+                            class="mt-6 btn-primary">
+                        <span x-text="content[currentLang].awakening.revealButton"></span>
+                        <i class="fas fa-arrow-down"></i>
+                    </button>
+                </div>
+
+                <div class="fade-in-right">
+                    <div class="relative">
+                        <div class="bg-white rounded-2xl p-8 shadow-xl">
+                            <h3 class="text-2xl font-bold mb-6 text-center" x-text="content[currentLang].awakening.resultTitle"></h3>
+
+                            <!-- Before/After Comparison -->
+                            <div class="space-y-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Lead Quality:</span>
+                                    <div class="flex gap-2">
+                                        <span class="text-red-500 line-through">20%</span>
+                                        <span class="text-green-500 font-bold">85%</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar" style="--progress-width: 85%" :class="{'animate': revealedInsights >= 2}"></div>
+
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Customer Intel:</span>
+                                    <div class="flex gap-2">
+                                        <span class="text-red-500 line-through">5%</span>
+                                        <span class="text-green-500 font-bold">95%</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar" style="--progress-width: 95%" :class="{'animate': revealedInsights >= 3}"></div>
+
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Close Rate:</span>
+                                    <div class="flex gap-2">
+                                        <span class="text-red-500 line-through">3%</span>
+                                        <span class="text-green-500 font-bold">25%</span>
+                                    </div>
+                                </div>
+                                <div class="progress-bar" style="--progress-width: 25%" :class="{'animate': revealedInsights >= 4}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Magic Demo Section -->
+    <section id="demo" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].demo.title"></h2>
+                <p class="text-xl text-gray-600" x-text="content[currentLang].demo.subtitle"></p>
+            </div>
+
+            <!-- Step by Step Demo -->
+            <div class="relative">
+                <!-- Steps Timeline -->
+                <div class="flex justify-between items-center mb-12">
+                    <template x-for="(step, index) in content[currentLang].demo.steps" :key="index">
+                        <div class="flex flex-col items-center step-item"
+                             :class="{
+                                'active': currentStep === index,
+                                'completed': currentStep > index
+                             }">
+                            <div class="w-12 h-12 rounded-full border-4 flex items-center justify-center font-bold text-lg"
+                                 :class="{
+                                    'bg-blue-500 border-blue-500 text-white': currentStep >= index,
+                                    'border-gray-300 text-gray-400': currentStep < index
+                                 }">
+                                <span x-text="index + 1"></span>
+                            </div>
+                            <span class="mt-2 text-sm font-medium" x-text="step.title"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Step Content -->
+                <div class="bg-gray-50 rounded-2xl p-8 min-h-96">
+                    <template x-for="(step, index) in content[currentLang].demo.steps" :key="index">
+                        <div x-show="currentStep === index" class="tab-content" :class="{'active': currentStep === index}">
+                            <div class="grid md:grid-cols-2 gap-8 items-center">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-4" x-text="step.title"></h3>
+                                    <p class="text-lg text-gray-600 mb-6" x-text="step.description"></p>
+                                    <ul class="space-y-2">
+                                        <template x-for="feature in step.features" :key="feature">
+                                            <li class="flex items-center gap-2">
+                                                <i class="fas fa-check text-green-500"></i>
+                                                <span x-text="feature"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-8xl mb-4" x-text="step.icon"></div>
+                                    <div class="bg-white rounded-lg p-4 shadow-lg">
+                                        <p class="text-sm text-gray-600" x-text="step.example"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex justify-center gap-4 mt-8">
+                    <button @click="prevStep()"
+                            x-show="currentStep > 0"
+                            class="btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        <span x-text="content[currentLang].demo.prevButton"></span>
+                    </button>
+
+                    <button @click="nextStep()"
+                            x-show="currentStep < content[currentLang].demo.steps.length - 1"
+                            class="btn-primary">
+                        <span x-text="content[currentLang].demo.nextButton"></span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <a @click="scrollToContact"
+                       x-show="currentStep === content[currentLang].demo.steps.length - 1"
+                       class="btn-primary cursor-pointer">
+                        <span x-text="content[currentLang].demo.startButton"></span>
+                        <i class="fas fa-rocket"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Example Section -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].liveExample.title"></h2>
+                <p class="text-xl text-gray-600" x-text="content[currentLang].liveExample.subtitle"></p>
+            </div>
+
+            <!-- Industry Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <template x-for="(example, index) in content[currentLang].liveExample.industries" :key="index">
+                    <button @click="selectedIndustry = index"
+                            class="px-6 py-3 rounded-lg font-medium transition-all"
+                            :class="{
+                                'bg-blue-500 text-white': selectedIndustry === index,
+                                'bg-white text-gray-600 hover:bg-gray-100': selectedIndustry !== index
+                            }">
+                        <span x-text="example.icon + ' ' + example.name"></span>
+                    </button>
+                </template>
+            </div>
+
+            <!-- Industry Content -->
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <template x-for="(example, index) in content[currentLang].liveExample.industries" :key="index">
+                    <div x-show="selectedIndustry === index" class="tab-content" :class="{'active': selectedIndustry === index}">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-4" x-text="example.name"></h3>
+                                <p class="text-gray-600 mb-6" x-text="example.description"></p>
+
+                                <h4 class="font-semibold mb-4">Key Questions We'd Ask:</h4>
+                                <ul class="space-y-2 mb-6">
+                                    <template x-for="question in example.questions" :key="question">
+                                        <li class="flex items-start gap-2">
+                                            <i class="fas fa-question-circle text-blue-500 mt-1"></i>
+                                            <span x-text="question"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h5 class="font-semibold text-green-700 mb-2">Expected Result:</h5>
+                                    <p class="text-green-600" x-text="example.result"></p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="bg-gray-50 rounded-lg p-6">
+                                    <h4 class="font-semibold mb-4">Sample Personalized Output:</h4>
+                                    <div class="bg-white rounded-lg p-4 border-l-4 border-blue-500">
+                                        <p class="text-sm text-gray-700" x-text="example.sampleOutput"></p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 space-y-4">
+                                    <h4 class="font-semibold">Intelligence Collected:</h4>
+                                    <template x-for="intel in example.intelligence" :key="intel">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fas fa-brain text-purple-500"></i>
+                                            <span class="text-sm" x-text="intel"></span>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </section>
+
+    <!-- Follow-up Magic Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].followup.title"></h2>
+                <p class="text-xl text-gray-600" x-text="content[currentLang].followup.subtitle"></p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Before: Generic Messages -->
+                <div class="fade-in-left">
+                    <h3 class="text-2xl font-bold mb-6 text-red-600" x-text="content[currentLang].followup.before.title"></h3>
+                    <div class="space-y-4">
+                        <template x-for="(message, index) in content[currentLang].followup.before.messages" :key="index">
+                            <div class="message-bubble bg-red-50 border-l-4 border-red-500 p-4 rounded-lg"
+                                 :style="'animation-delay: ' + (index * 0.5) + 's'">
+                                <p class="text-gray-700" x-text="message"></p>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <span class="bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-semibold">
+                            Response Rate: 2-5%
+                        </span>
+                    </div>
+                </div>
+
+                <!-- After: Personalized Messages -->
+                <div class="fade-in-right">
+                    <h3 class="text-2xl font-bold mb-6 text-green-600" x-text="content[currentLang].followup.after.title"></h3>
+                    <div class="space-y-4">
+                        <template x-for="(message, index) in content[currentLang].followup.after.messages" :key="index">
+                            <div class="message-bubble bg-green-50 border-l-4 border-green-500 p-4 rounded-lg"
+                                 :style="'animation-delay: ' + (index * 0.5 + 1) + 's'">
+                                <p class="text-gray-700" x-text="message"></p>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold">
+                            Response Rate: 35-60%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Stack Section -->
+    <section class="py-20 px-4 bg-gradient-to-r from-blue-50 to-purple-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 fade-in-up">
+                <h2 class="text-4xl font-bold mb-4" x-text="content[currentLang].valueStack.title"></h2>
+                <p class="text-gray-600 text-lg" x-text="content[currentLang].valueStack.subtitle"></p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <template x-for="(item, index) in content[currentLang].valueStack.items" :key="index">
+                    <div class="flex justify-between items-center py-4 border-b border-gray-200 last:border-b-0 hover-scale">
+                        <div>
+                            <h3 class="font-semibold text-lg" x-text="item.title"></h3>
+                            <p class="text-gray-600 text-sm" x-text="item.description"></p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-2xl font-bold text-gray-500 line-through" x-text="item.price"></p>
+                        </div>
+                    </div>
+                </template>
+
+                <div class="border-t-2 border-gray-800 pt-6 mt-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-2xl font-bold" x-text="content[currentLang].valueStack.total.title"></h3>
+                            <p class="text-gray-600" x-text="content[currentLang].valueStack.total.description"></p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-3xl font-bold text-green-600" x-text="content[currentLang].valueStack.total.price"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Stories Section -->
+    <section id="pricing" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].pricing.title"></h2>
+                <p class="text-xl text-gray-600" x-text="content[currentLang].pricing.subtitle"></p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <template x-for="(plan, index) in content[currentLang].pricing.plans" :key="index">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg hover-lift"
+                         :class="plan.featured ? 'ring-4 ring-blue-500 scale-105' : ''">
+
+                        <div class="text-center mb-6">
+                            <div x-show="plan.featured" class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                                Most Popular
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2" x-text="plan.name"></h3>
+
+                            <!-- Price with strikethrough -->
+                            <div class="mb-2">
+                                <span x-show="plan.oldPrice" class="text-xl text-gray-400 line-through mr-2" x-text="plan.oldPrice"></span>
+                                <span class="text-4xl font-bold text-blue-600" x-text="plan.price"></span>
+                            </div>
+
+                            <!-- Spots Left -->
+                            <div x-show="plan.spotsLeft" class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold mb-3 inline-block">
+                                <span>⚡ </span><span x-text="plan.spotsLeft"></span>
+                            </div>
+
+                            <p class="text-gray-600" x-text="plan.description"></p>
+                        </div>
+
+                        <!-- Features -->
+                        <ul class="space-y-3 mb-6">
+                            <template x-for="feature in plan.features" :key="feature">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-green-500 mt-1"></i>
+                                    <span class="text-sm" x-text="feature"></span>
+                                </li>
+                            </template>
+                        </ul>
+
+                        <!-- Bonuses -->
+                        <div x-show="plan.bonuses" class="bg-green-50 border-l-4 border-green-500 p-4 mb-6 rounded">
+                            <h4 class="font-semibold text-green-800 mb-2 text-sm">🎁 Early Access Bonus:</h4>
+                            <ul class="space-y-2">
+                                <template x-for="bonus in plan.bonuses" :key="bonus">
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-gift text-green-600 mt-1 text-xs"></i>
+                                        <span class="text-xs text-green-700" x-text="bonus"></span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+
+                        <!-- CTA -->
+                        <a @click="scrollToContact"
+                           class="block w-full text-center py-3 rounded-lg font-semibold transition-all cursor-pointer"
+                           :class="plan.featured ? 'bg-blue-500 text-white hover:bg-blue-600' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'">
+                            <span x-text="plan.cta"></span>
+                        </a>
+                    </div>
+                </template>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600 mb-4" x-text="content[currentLang].pricing.guarantee"></p>
+                <div class="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full">
+                    <i class="fas fa-shield-alt"></i>
+                    <span class="text-sm font-semibold">30-Day Money Back Guarantee</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Contact Section -->
+    <section id="contact" class="py-20 px-4 gradient-bg-1 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6" x-text="content[currentLang].contact.title"></h2>
+            <p class="text-xl mb-8 opacity-90" x-text="content[currentLang].contact.subtitle"></p>
+
+            <a :href="whatsappLink" target="_blank" class="whatsapp-btn mb-6">
+                <i class="fab fa-whatsapp"></i>
+                <span x-text="content[currentLang].contact.cta"></span>
+            </a>
+
+            <p class="text-sm opacity-75 mb-4" x-text="content[currentLang].contact.responseTime"></p>
+
+            <!-- Guarantee -->
+            <div class="bg-white/10 rounded-lg p-4 max-w-2xl mx-auto">
+                <p class="text-sm opacity-90" x-text="content[currentLang].contact.guarantee"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="text-2xl font-bold mb-4">SystemHustle</div>
+            <p class="text-gray-400 mb-6" x-text="content[currentLang].footer.description"></p>
+
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="mailto:leo@systemhustle.com" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fas fa-envelope"></i> leo@systemhustle.com
+                </a>
+                <a href="https://t.me/leonidshvorob" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a href="https://wa.me/628175755953" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+
+            <div class="text-gray-500 text-sm">
+                <span x-text="content[currentLang].footer.copyright"></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function landingApp() {
+            return {
+                currentLang: 'en',
+                currentStep: 0,
+                revealedInsights: 0,
+                selectedIndustry: 0,
+                metrics: {
+                    conversion: 0,
+                    intelligence: 0
+                },
+
+                content: {
+                    en: {
+                        nav: {
+                            story: 'Story',
+                            demo: 'Demo',
+                            pricing: 'Pricing',
+                            cta: 'View Pricing'
+                        },
+                        hero: {
+                            overline: 'Sales Intelligence Revolution',
+                            h1: 'Stop Getting Surface Data. Start Getting Sales Intelligence.',
+                            typing: 'Meet Darya. She spends $2,000/month on ads, gets 100 leads... but only 3 book calls.',
+                            primaryCta: 'View Early Access Pricing',
+                            secondaryCta: 'See How It Works',
+                            scarcity: '⚡ Beta testing with select businesses'
+                        },
+                        story: {
+                            title: 'The Problem Every Business Owner Faces',
+                            subtitle: 'You know this story. Maybe you\'re living it right now.',
+                            character: {
+                                name: 'Meet Darya - Personal Development Coach',
+                                description: 'Darya has a successful coaching business. She helps entrepreneurs scale their companies. But she has a problem that\'s costing her $50,000+ per year.',
+                                problems: [
+                                    'Pays $50+ per lead just to get their email',
+                                    'Has 5,000 contacts but knows nothing about their real problems',
+                                    'Sends generic follow-ups that feel like spam'
+                                ]
+                            },
+                            pain: 'Result: 97% of her leads never become customers'
+                        },
+                        awakening: {
+                            title: 'What If There Was a Different Way?',
+                            subtitle: 'What if Darya could extract detailed customer intelligence from every visitor?',
+                            insights: [
+                                {
+                                    title: 'The Question',
+                                    description: 'What if visitors answered 15 detailed questions about their business problems?'
+                                },
+                                {
+                                    title: 'The Challenge',
+                                    description: 'Normally they\'d say "hell no" - who has time for 15 questions?'
+                                },
+                                {
+                                    title: 'The Solution',
+                                    description: 'But what if they got incredible value in return? A personalized strategy worth $500+?'
+                                },
+                                {
+                                    title: 'The Magic',
+                                    description: 'Now Darya knows their revenue, struggles, goals, and psychology before the first call.'
+                                },
+                                {
+                                    title: 'The Result',
+                                    description: 'Her follow-ups feel like mind-reading. Close rate jumps from 3% to 25%.'
+                                }
+                            ],
+                            revealButton: 'Continue Story',
+                            resultTitle: 'Darya\'s Transformation'
+                        },
+                        demo: {
+                            title: 'Here\'s How the Magic Works',
+                            subtitle: 'Step-by-step breakdown of the customer intelligence system',
+                            steps: [
+                                {
+                                    title: 'Visitor Arrives',
+                                    description: 'Someone visits your website, sees your Custom-GPT widget that promises real value.',
+                                    icon: '👤',
+                                    features: [
+                                        'Branded to match your website',
+                                        'Compelling value proposition',
+                                        'Mobile-optimized experience'
+                                    ],
+                                    example: '"Get your personalized growth strategy in 10 minutes"'
+                                },
+                                {
+                                    title: 'Deep Questions',
+                                    description: 'They answer 10-15 targeted questions about their business, goals, and challenges.',
+                                    icon: '❓',
+                                    features: [
+                                        'Smart question flow',
+                                        'Conditional logic',
+                                        'Progress tracking'
+                                    ],
+                                    example: '"What\'s your biggest revenue challenge right now?"'
+                                },
+                                {
+                                    title: 'AI Processing',
+                                    description: 'Custom-GPT analyzes their answers and generates a personalized strategy guide.',
+                                    icon: '🧠',
+                                    features: [
+                                        'Personalized recommendations',
+                                        'Industry-specific advice',
+                                        'Actionable steps'
+                                    ],
+                                    example: '"Based on your $100K revenue goal, here are 3 specific strategies..."'
+                                },
+                                {
+                                    title: 'Value Delivery',
+                                    description: 'They receive a detailed, personalized guide worth hundreds of dollars.',
+                                    icon: '📄',
+                                    features: [
+                                        'Professional formatting',
+                                        'Your brand voice',
+                                        'Immediately actionable'
+                                    ],
+                                    example: '"Your Custom Business Growth Blueprint - 12 pages of personalized strategies"'
+                                },
+                                {
+                                    title: 'Contact Capture',
+                                    description: 'To receive their guide, they provide email/contact info willingly.',
+                                    icon: '📧',
+                                    features: [
+                                        'Natural opt-in process',
+                                        'High-value exchange',
+                                        'GDPR compliant'
+                                    ],
+                                    example: '"Enter your email to receive your personalized strategy guide"'
+                                },
+                                {
+                                    title: 'Intelligence Gold',
+                                    description: 'You now have detailed customer profile: problems, goals, budget, psychology.',
+                                    icon: '💎',
+                                    features: [
+                                        'Complete customer profile',
+                                        'Pain point analysis',
+                                        'Buying signals'
+                                    ],
+                                    example: '"Revenue: $50K, Goal: $200K, Challenge: Lead generation, Urgency: High"'
+                                }
+                            ],
+                            prevButton: 'Previous',
+                            nextButton: 'Next Step',
+                            startButton: 'Get Started Now'
+                        },
+                        liveExample: {
+                            title: 'See It In Action: Industry Examples',
+                            subtitle: 'Here\'s what this looks like for different businesses',
+                            industries: [
+                                {
+                                    icon: '🎯',
+                                    name: 'Personal Coach',
+                                    description: 'Help entrepreneurs scale their companies with personalized strategies.',
+                                    questions: [
+                                        'What\'s your current monthly revenue?',
+                                        'What\'s your biggest growth challenge?',
+                                        'How many employees do you have?',
+                                        'What\'s your target revenue in 12 months?'
+                                    ],
+                                    sampleOutput: '"Based on your $50K monthly revenue and team of 5, here\'s your personalized scaling blueprint: 1) Implement these 3 systems to handle 2x growth, 2) Hire these specific roles next, 3) Focus on these high-ROI marketing channels..."',
+                                    result: 'Hypothetical: 85% book discovery calls vs 3% with generic content',
+                                    intelligence: [
+                                        'Current revenue level',
+                                        'Growth challenges',
+                                        'Team size & structure',
+                                        'Investment capacity'
+                                    ]
+                                },
+                                {
+                                    icon: '📚',
+                                    name: 'Info-Entrepreneur',
+                                    description: 'Provide instant value audits that showcase expertise.',
+                                    questions: [
+                                        'What\'s your experience level?',
+                                        'What\'s your biggest challenge?',
+                                        'How much time can you invest?',
+                                        'What\'s your learning budget?'
+                                    ],
+                                    sampleOutput: '"Your personalized learning path reveals: You should start with these fundamentals (weeks 1-4), focus on practical implementation (weeks 5-8), and master these advanced strategies..."',
+                                    result: 'Hypothetical: Course conversion improves 3-4x with proper segmentation',
+                                    intelligence: [
+                                        'Experience level',
+                                        'Time availability',
+                                        'Budget range',
+                                        'Specific goals'
+                                    ]
+                                }
+                            ]
+                        },
+                        followup: {
+                            title: 'The Follow-Up Magic',
+                            subtitle: 'See the difference between generic and intelligent follow-ups',
+                            before: {
+                                title: 'Before: Generic Messages',
+                                messages: [
+                                    'Hi! Thanks for downloading our guide.',
+                                    'Are you interested in learning more about our services?',
+                                    'We help businesses grow. Want to chat?',
+                                    'Last chance to book a free consultation!'
+                                ]
+                            },
+                            after: {
+                                title: 'After: Intelligence-Driven',
+                                messages: [
+                                    'Hi Darya! Saw you\'re looking to scale from $50K to $200K monthly. That 4x growth goal is ambitious - love it!',
+                                    'Your biggest challenge (team management during rapid growth) is exactly what I helped TechCorp solve last year. They went from 8 to 40 employees in 6 months.',
+                                    'Based on your current team of 5, you\'ll hit a bottleneck around $120K monthly unless you implement these systems first...',
+                                    'I recorded a quick 3-minute video showing exactly how TechCorp avoided that bottleneck. Worth 2 minutes of your time?'
+                                ]
+                            },
+                            cta: 'Get This Follow-Up Power'
+                        },
+                        valueStack: {
+                            title: 'What You\'d Normally Pay vs. What You Get',
+                            subtitle: 'Conservative breakdown of the real value you\'re receiving',
+                            items: [
+                                {
+                                    title: 'Customer Research Consultant',
+                                    description: 'Professional customer discovery & analysis',
+                                    price: '$2,000'
+                                },
+                                {
+                                    title: 'Personalized Content Creation',
+                                    description: 'Custom guides, reports, and recommendations',
+                                    price: '$1,500'
+                                },
+                                {
+                                    title: 'CRM Setup & Integration',
+                                    description: 'HubSpot, GHL, Airtable connection + automation',
+                                    price: '$1,000'
+                                },
+                                {
+                                    title: 'Follow-up Sequence Development',
+                                    description: 'Personalized email sequences based on customer data',
+                                    price: '$1,000'
+                                }
+                            ],
+                            total: {
+                                title: 'Total Value',
+                                description: 'Complete customer intelligence system',
+                                price: '$5,500+'
+                            },
+                            cta: 'View Early Access Pricing'
+                        },
+                        pricing: {
+                            title: 'Early Access Pricing',
+                            subtitle: 'Limited spots available. Lock in beta pricing before rates increase.',
+                            plans: [
+                                {
+                                    name: 'Starter',
+                                    price: '$99',
+                                    oldPrice: '$149',
+                                    spotsLeft: '3 of 5 spots left',
+                                    description: 'Perfect for testing the concept',
+                                    featured: false,
+                                    features: [
+                                        'Pre-built question templates',
+                                        'Basic customization',
+                                        'Google Sheets integration',
+                                        'Email delivery',
+                                        '30-day money-back guarantee'
+                                    ],
+                                    bonuses: [
+                                        'Early access price ($99 vs $149)',
+                                        'Free future template updates',
+                                        'Setup priority'
+                                    ],
+                                    cta: 'Get Started at $99'
+                                },
+                                {
+                                    name: 'Professional',
+                                    price: '$300',
+                                    oldPrice: '$500',
+                                    spotsLeft: '1 of 2 spots left',
+                                    description: 'Full brand customization',
+                                    featured: true,
+                                    features: [
+                                        'Everything in Starter',
+                                        'Complete brand customization',
+                                        'Custom question flows',
+                                        '20+ CRM integrations',
+                                        'Advanced analytics',
+                                        'A/B testing'
+                                    ],
+                                    bonuses: [
+                                        'Founder price ($300 vs $500)',
+                                        '30 days free tech support',
+                                        'Free access to new Pro features',
+                                        'Featured case study',
+                                        'One-time optimization consultation'
+                                    ],
+                                    cta: 'Claim Founder Price'
+                                },
+                                {
+                                    name: 'Enterprise',
+                                    price: '$1000+',
+                                    oldPrice: '$2000+',
+                                    spotsLeft: '1 exclusive spot',
+                                    description: 'Custom everything',
+                                    featured: false,
+                                    features: [
+                                        'Everything in Professional',
+                                        'Full CRM automation',
+                                        'Custom follow-up sequences',
+                                        'Advanced analytics dashboard',
+                                        'Multi-channel deployment'
+                                    ],
+                                    bonuses: [
+                                        '50% setup discount',
+                                        '90 days free tech support',
+                                        'Free lifetime feature updates',
+                                        'Premium case study feature',
+                                        'Co-creation priority',
+                                        'White-label rights included'
+                                    ],
+                                    cta: 'Apply for Partnership'
+                                }
+                            ],
+                            guarantee: 'All plans include 30-day money-back guarantee. If it doesn\'t improve your lead quality, keep the GPT and get a full refund.'
+                        },
+                        contact: {
+                            title: 'Choose Your Early Access Plan',
+                            subtitle: 'Beta pricing ends when spots are filled. Starter: $99 (3/5 left) | Professional: $300 (1/2 left) | Enterprise: Partnership (1 spot)',
+                            cta: 'View Pricing',
+                            responseTime: 'Setup completed within 48-72 hours',
+                            guarantee: '30-day money-back guarantee on all plans'
+                        },
+                        footer: {
+                            description: 'AI-powered customer intelligence for modern businesses',
+                            copyright: '© 2025 SystemHustle. All rights reserved.'
+                        }
+                    },
+                    ru: {
+                        nav: {
+                            story: 'История',
+                            demo: 'Демо',
+                            pricing: 'Тарифы',
+                            cta: 'Посмотреть цены'
+                        },
+                        hero: {
+                            overline: 'Революция интеллекта продаж',
+                            h1: 'Хватит собирать данные. Начните собирать интеллект продаж.',
+                            typing: 'Знакомьтесь — Дарья. Тратит 150,000₽ в месяц на рекламу, получает 100 лидов... но только 3 записываются на звонок.',
+                            primaryCta: 'Посмотреть цены',
+                            secondaryCta: 'Посмотреть как работает',
+                            scarcity: '⚡ Тестируем с первыми 20 бизнесами'
+                        },
+                        story: {
+                            title: 'Проблема, которую знает каждый предприниматель',
+                            subtitle: 'Вы знаете эту историю. Возможно, живете ею прямо сейчас.',
+                            character: {
+                                name: 'Знакомьтесь — Дарья, коуч по личной эффективности',
+                                description: 'Дарья ведет премиальную программу коучинга. Помогает амбициозным профессионалам пробить свой потолок дохода. Её программа стоит 1,000,000₽. Но у неё есть проблема, которая обходится ей в миллионы рублей ежегодно.',
+                                problems: [
+                                    'Платит 6,000₽+ за лид, получая только email',
+                                    'Имеет 3,000 контактов, но ничего не знает об их реальной ситуации',
+                                    'Отправляет шаблонные сообщения, которые воспринимаются как боты'
+                                ]
+                            },
+                            pain: 'Результат: 98% её лидов даже не записываются на звонок. Те 2%, кто записываются, часто не квалифицированы.'
+                        },
+                        awakening: {
+                            title: 'А что если есть другой способ?',
+                            subtitle: 'Что если Дарья могла бы извлекать детальную аналитику клиентов от каждого посетителя?',
+                            insights: [
+                                {
+                                    title: 'Вопрос',
+                                    description: 'Что если посетители отвечали на 15 детальных вопросов о проблемах их бизнеса?'
+                                },
+                                {
+                                    title: 'Вызов',
+                                    description: 'Обычно они сказали бы "ни за что" - у кого есть время на 15 вопросов?'
+                                },
+                                {
+                                    title: 'Решение',
+                                    description: 'Но что если взамен они получали невероятную ценность? Персонализированную стратегию стоимостью 20,000-35,000₽?'
+                                },
+                                {
+                                    title: 'Магия',
+                                    description: 'Теперь Дарья знает их доходы, проблемы, цели и психологию до первого звонка.'
+                                },
+                                {
+                                    title: 'Результат',
+                                    description: 'Её последующие сообщения как чтение мыслей. Конверсия растёт с 3% до 25%.'
+                                }
+                            ],
+                            revealButton: 'Продолжить историю',
+                            resultTitle: 'Трансформация Дарьи'
+                        },
+                        demo: {
+                            title: 'Вот как работает магия',
+                            subtitle: 'Пошаговая разбивка системы интеллекта клиентов',
+                            steps: [
+                                {
+                                    title: 'Посетитель приходит',
+                                    description: 'Кто-то заходит на ваш сайт, видит ваш Custom-GPT виджет, который обещает реальную ценность.',
+                                    icon: '👤',
+                                    features: [
+                                        'Брендинг под ваш сайт',
+                                        'Убедительное ценностное предложение',
+                                        'Мобильная оптимизация'
+                                    ],
+                                    example: '"Получите персональную стратегию роста за 10 минут"'
+                                },
+                                {
+                                    title: 'Глубокие вопросы',
+                                    description: 'Они отвечают на 10-15 целевых вопросов о бизнесе, целях и вызовах.',
+                                    icon: '❓',
+                                    features: [
+                                        'Умный поток вопросов',
+                                        'Условная логика',
+                                        'Отслеживание прогресса'
+                                    ],
+                                    example: '"Какой ваш главный вызов в росте доходов сейчас?"'
+                                },
+                                {
+                                    title: 'Обработка ИИ',
+                                    description: 'Custom-GPT анализирует ответы и генерирует персональный гайд стратегии.',
+                                    icon: '🧠',
+                                    features: [
+                                        'Персонализированные рекомендации',
+                                        'Отраслевые советы',
+                                        'Действенные шаги'
+                                    ],
+                                    example: '"Основываясь на вашей цели 7М₽ дохода, вот 3 специфические стратегии..."'
+                                },
+                                {
+                                    title: 'Доставка ценности',
+                                    description: 'Они получают детальный персонализированный гайд стоимостью в десятки тысяч рублей.',
+                                    icon: '📄',
+                                    features: [
+                                        'Профессиональное оформление',
+                                        'Голос вашего бренда',
+                                        'Сразу действенный'
+                                    ],
+                                    example: '"Ваш персональный план роста бизнеса - 12 страниц персонализированных стратегий"'
+                                },
+                                {
+                                    title: 'Сбор контакта',
+                                    description: 'Чтобы получить гайд, они добровольно предоставляют email/контактную информацию.',
+                                    icon: '📧',
+                                    features: [
+                                        'Естественный процесс подписки',
+                                        'Высокоценный обмен',
+                                        'Соответствие GDPR'
+                                    ],
+                                    example: '"Введите email для получения персонального гайда стратегии"'
+                                },
+                                {
+                                    title: 'Золото интеллекта',
+                                    description: 'У вас теперь детальный профиль клиента: проблемы, цели, бюджет, психология.',
+                                    icon: '💎',
+                                    features: [
+                                        'Полный профиль клиента',
+                                        'Анализ болевых точек',
+                                        'Сигналы покупки'
+                                    ],
+                                    example: '"Доход: 4М₽, Цель: 15М₽, Вызов: Генерация лидов, Срочность: Высокая"'
+                                }
+                            ],
+                            prevButton: 'Назад',
+                            nextButton: 'Следующий шаг',
+                            startButton: 'Начать сейчас'
+                        },
+                        liveExample: {
+                            title: 'Посмотрите в действии: Примеры по отраслям',
+                            subtitle: 'Вот как это выглядит для разных видов бизнеса',
+                            industries: [
+                                {
+                                    icon: '🎯',
+                                    name: 'Личный коуч',
+                                    description: 'Помогает предпринимателям масштабировать компании с персональными стратегиями.',
+                                    questions: [
+                                        'Какой у вас текущий месячный доход?',
+                                        'Какой главный вызов роста?',
+                                        'Сколько у вас сотрудников?',
+                                        'Какой целевой доход через 12 месяцев?'
+                                    ],
+                                    sampleOutput: '"Основываясь на вашем доходе 4М₽ в месяц и команде из 5 человек, вот ваш персональный план масштабирования: 1) Внедрите эти 3 системы для обработки 2x роста, 2) Наймите эти конкретные роли следующими, 3) Сфокусируйтесь на этих высокоROI каналах маркетинга..."',
+                                    result: 'Гипотетически: 85% записываются на звонки vs 3% с обычным контентом',
+                                    intelligence: [
+                                        'Текущий уровень дохода',
+                                        'Вызовы роста',
+                                        'Размер и структура команды',
+                                        'Инвестиционная способность'
+                                    ]
+                                },
+                                {
+                                    icon: '📚',
+                                    name: 'Инфо-предприниматель',
+                                    description: 'Предоставляет мгновенные аудиты ценности, демонстрирующие экспертизу.',
+                                    questions: [
+                                        'Какой у вас уровень опыта?',
+                                        'Какой главный вызов?',
+                                        'Сколько времени можете инвестировать?',
+                                        'Какой бюджет на обучение?'
+                                    ],
+                                    sampleOutput: '"Ваш персональный путь обучения показывает: Вам стоит начать с этих основ (недели 1-4), сфокусироваться на практической реализации (недели 5-8), и освоить эти продвинутые стратегии..."',
+                                    result: 'Гипотетически: Конверсия курса улучшается в 3-4 раза с правильной сегментацией',
+                                    intelligence: [
+                                        'Уровень опыта',
+                                        'Доступность времени',
+                                        'Диапазон бюджета',
+                                        'Конкретные цели'
+                                    ]
+                                }
+                            ]
+                        },
+                        followup: {
+                            title: 'Магия последующих сообщений',
+                            subtitle: 'Увидьте разницу между общими и интеллектуальными сообщениями',
+                            before: {
+                                title: 'До: Общие сообщения',
+                                messages: [
+                                    'Привет! Спасибо за скачивание нашего гайда.',
+                                    'Вас интересует больше информации о наших услугах?',
+                                    'Мы помогаем бизнесам расти. Хотите пообщаться?',
+                                    'Последний шанс записаться на бесплатную консультацию!'
+                                ]
+                            },
+                            after: {
+                                title: 'После: На основе интеллекта',
+                                messages: [
+                                    'Привет, Дарья! Вижу, что хотите масштабироваться с 4М₽ до 15М₽ в месяц. Эта цель роста в 4 раза амбициозна - нравится!',
+                                    'Ваш главный вызов (управление командой во время быстрого роста) - именно то, что я помог решить TechCorp в прошлом году. Они выросли с 8 до 40 сотрудников за 6 месяцев.',
+                                    'Основываясь на вашей текущей команде из 5 человек, вы столкнётесь с узким местом около 9М₽ в месяц, если не внедрите эти системы сначала...',
+                                    'Я записал короткое 3-минутное видео, показывающее, как именно TechCorp избежал этого узкого места. Стоит 2 минут вашего времени?'
+                                ]
+                            },
+                            cta: 'Получить эту силу последующих сообщений'
+                        },
+                        valueStack: {
+                            title: 'Что обычно платили бы vs. Что получаете',
+                            subtitle: 'Консервативная разбивка реальной ценности, которую получаете',
+                            items: [
+                                {
+                                    title: 'Консультант по исследованию клиентов',
+                                    description: 'Профессиональное обнаружение клиентов и анализ',
+                                    price: '150,000₽'
+                                },
+                                {
+                                    title: 'Создание персонализированного контента',
+                                    description: 'Кастомные гайды, отчёты и рекомендации',
+                                    price: '110,000₽'
+                                },
+                                {
+                                    title: 'Настройка и интеграция CRM',
+                                    description: 'Подключение HubSpot, GHL, Airtable + автоматизация',
+                                    price: '75,000₽'
+                                },
+                                {
+                                    title: 'Разработка последовательности сообщений',
+                                    description: 'Персонализированные email-последовательности на основе данных клиентов',
+                                    price: '75,000₽'
+                                }
+                            ],
+                            total: {
+                                title: 'Общая ценность',
+                                description: 'Полная система интеллекта клиентов',
+                                price: '410,000₽+'
+                            },
+                            cta: 'Посмотреть цены раннего доступа'
+                        },
+                        pricing: {
+                            title: 'Цены раннего доступа',
+                            subtitle: 'Ограниченные места. Зафиксируйте бета-цены до их повышения.',
+                            plans: [
+                                {
+                                    name: 'Старт',
+                                    price: '7,000₽',
+                                    oldPrice: '11,000₽',
+                                    spotsLeft: 'осталось 3 из 5',
+                                    description: 'Идеально для тестирования концепции',
+                                    featured: false,
+                                    features: [
+                                        'Готовые шаблоны вопросов',
+                                        'Базовая настройка',
+                                        'Интеграция с Google Sheets',
+                                        'Email доставка',
+                                        'Гарантия возврата 30 дней'
+                                    ],
+                                    bonuses: [
+                                        'Цена раннего доступа (7,000₽ vs 11,000₽)',
+                                        'Бесплатные обновления шаблонов',
+                                        'Приоритет в настройке'
+                                    ],
+                                    cta: 'Начать за 7,000₽'
+                                },
+                                {
+                                    name: 'Профессиональный',
+                                    price: '22,000₽',
+                                    oldPrice: '37,000₽',
+                                    spotsLeft: 'осталось 1 из 2',
+                                    description: 'Полная настройка бренда',
+                                    featured: true,
+                                    features: [
+                                        'Всё из Starter',
+                                        'Полная настройка бренда',
+                                        'Кастомные потоки вопросов',
+                                        '20+ интеграций CRM',
+                                        'Продвинутая аналитика',
+                                        'A/B тестирование'
+                                    ],
+                                    bonuses: [
+                                        'Цена основателя (22,000₽ vs 37,000₽)',
+                                        '30 дней бесплатной техподдержки',
+                                        'Бесплатный доступ к новым Pro-фичам',
+                                        'Размещение кейса',
+                                        'Одноразовая консультация по оптимизации'
+                                    ],
+                                    cta: 'Забрать цену основателя'
+                                },
+                                {
+                                    name: 'Энтерпрайз',
+                                    price: '75К₽+',
+                                    oldPrice: '150К₽+',
+                                    spotsLeft: '1 эксклюзивное место',
+                                    description: 'Полная кастомизация',
+                                    featured: false,
+                                    features: [
+                                        'Всё из Профессионального',
+                                        'Полная автоматизация CRM',
+                                        'Кастомные последовательности',
+                                        'Продвинутая аналитика',
+                                        'Мультиканальное развёртывание'
+                                    ],
+                                    bonuses: [
+                                        '50% скидка на настройку',
+                                        '90 дней бесплатной техподдержки',
+                                        'Бесплатные обновления навсегда',
+                                        'Premium кейс-стади',
+                                        'Приоритет в создании',
+                                        'White-label права'
+                                    ],
+                                    cta: 'Подать заявку на партнерство'
+                                }
+                            ],
+                            guarantee: 'Все планы включают 30-дневную гарантию возврата денег. Если это не улучшит качество лидов, оставьте GPT себе и получите полный возврат.'
+                        },
+                        contact: {
+                            title: 'Выберите план раннего доступа',
+                            subtitle: 'Бета-цены заканчиваются когда места заполнятся. Starter: 7,000₽ (3/5) | Professional: 22,000₽ (1/2) | Enterprise: Партнерство (1)',
+                            cta: 'Посмотреть цены',
+                            responseTime: 'Настроим ваш custom GPT в течение 48 часов',
+                            guarantee: 'Гарантия 30 дней: Если не повысит качество лидов, вернём деньги и оставите GPT себе'
+                        },
+                        footer: {
+                            description: 'AI-инструменты интеллекта клиентов для современного бизнеса',
+                            copyright: '© 2025 SystemHustle. Все права защищены.'
+                        }
+                    }
+                },
+
+                get whatsappLink() {
+                    const message = this.currentLang === 'en'
+                        ? "Hi! I'm interested in the Early Access pricing for Custom-GPT implementation. Can we discuss the details?"
+                        : "Привет! Меня интересуют цены раннего доступа на внедрение Custom-GPT. Можем обсудить детали?";
+                    return `https://wa.me/628175755953?text=${encodeURIComponent(message)}`;
+                },
+
+                init() {
+                    this.animateCounters();
+                    this.setupScrollAnimations();
+                    // Manual navigation only - auto-advance disabled
+                },
+
+                switchLang(lang) {
+                    this.currentLang = lang;
+                    document.documentElement.lang = lang;
+                },
+
+                scrollToContact() {
+                    document.getElementById('contact').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                },
+
+                nextStep() {
+                    if (this.currentStep < this.content[this.currentLang].demo.steps.length - 1) {
+                        this.currentStep++;
+                    }
+                },
+
+                prevStep() {
+                    if (this.currentStep > 0) {
+                        this.currentStep--;
+                    }
+                },
+
+                revealNext() {
+                    if (this.revealedInsights < this.content[this.currentLang].awakening.insights.length - 1) {
+                        this.revealedInsights++;
+                    }
+                },
+
+                animateCounters() {
+                    const duration = 2000;
+                    const targetConversion = 85;
+                    const targetIntelligence = 95;
+
+                    const startTime = Date.now();
+
+                    const animate = () => {
+                        const elapsed = Date.now() - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+
+                        this.metrics.conversion = Math.floor(progress * targetConversion);
+                        this.metrics.intelligence = Math.floor(progress * targetIntelligence);
+
+                        if (progress < 1) {
+                            requestAnimationFrame(animate);
+                        }
+                    };
+
+                    animate();
+                },
+
+                setupScrollAnimations() {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                            }
+                        });
+                    });
+
+                    document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+                        observer.observe(el);
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
