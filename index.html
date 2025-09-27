@@ -417,8 +417,17 @@
 
             /* ValueStack - fix prices being cut off */
             .text-3xl {
-                font-size: 1.5rem !important;
+                font-size: 1.25rem !important;
                 white-space: nowrap;
+            }
+
+            .text-2xl {
+                font-size: 1.125rem !important;
+            }
+
+            /* Price in pricing cards */
+            .pricing-card .text-4xl {
+                font-size: 2rem !important;
             }
 
             /* Footer mobile */
@@ -462,37 +471,52 @@
         @media (max-width: 480px) {
             /* Extra small screens */
             h1 {
-                font-size: 1.75rem !important;
+                font-size: 1.5rem !important;
+                line-height: 1.3 !important;
             }
 
             .text-4xl {
-                font-size: 2rem !important;
+                font-size: 1.75rem !important;
+            }
+
+            .text-3xl {
+                font-size: 1.125rem !important;
             }
 
             .text-2xl {
-                font-size: 1.5rem !important;
+                font-size: 1.25rem !important;
             }
 
             .text-xl {
-                font-size: 1.125rem !important;
+                font-size: 1rem !important;
             }
 
             /* Tighter spacing */
             .gap-6 {
-                gap: 1rem !important;
+                gap: 0.75rem !important;
             }
 
             .gap-8 {
-                gap: 1.5rem !important;
+                gap: 1rem !important;
             }
 
             .gap-12 {
-                gap: 2rem !important;
+                gap: 1.5rem !important;
             }
 
-            /* Pricing mobile */
+            /* Pricing mobile - even smaller */
             .pricing-card {
-                padding: 1.25rem !important;
+                padding: 0.875rem !important;
+            }
+
+            .pricing-card .text-4xl {
+                font-size: 1.75rem !important;
+            }
+
+            /* Hero section on very small screens */
+            .max-w-6xl, .max-w-4xl {
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
             }
         }
     </style>
@@ -539,7 +563,7 @@
                     </h1>
 
                     <div class="text-xl mb-8 opacity-90 leading-relaxed">
-                        <div class="typing-text" x-text="content[currentLang].hero.typing"></div>
+                        <p x-text="content[currentLang].hero.typing"></p>
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-4 mb-8">
@@ -596,11 +620,11 @@
 
             <!-- Story Character -->
             <div class="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-8 mb-12 fade-in-up">
-                <div class="flex items-start gap-6">
-                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                <div class="flex items-start gap-6 character-intro">
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white text-4xl font-bold character-avatar">
                         👩‍💼
                     </div>
-                    <div class="flex-1">
+                    <div class="flex-1 character-info">
                         <h3 class="text-2xl font-bold mb-3" x-text="content[currentLang].story.character.name"></h3>
                         <p class="text-lg text-gray-700 mb-4" x-text="content[currentLang].story.character.description"></p>
                         <div class="grid md:grid-cols-3 gap-4">
@@ -1081,9 +1105,9 @@
                             cta: 'View Pricing'
                         },
                         hero: {
-                            overline: 'Sales Intelligence Revolution',
-                            h1: 'Stop Getting Surface Data. Start Getting Sales Intelligence.',
-                            typing: 'Meet Darya. She spends $2,000/month on ads, gets 100 leads... but only 3 book calls.',
+                            overline: 'For Coaches & Consultants',
+                            h1: 'Same Traffic. 2-3x More Revenue. With AI Customer Intelligence.',
+                            typing: 'Most coaches spend thousands on ads but convert only 2-3% of leads. The problem isn\'t your traffic—it\'s that you know nothing about your leads until they book a call.',
                             primaryCta: 'View Early Access Pricing',
                             secondaryCta: 'See How It Works',
                             scarcity: '⚡ Beta testing with select businesses'
@@ -1400,9 +1424,9 @@
                             cta: 'Посмотреть цены'
                         },
                         hero: {
-                            overline: 'Революция интеллекта продаж',
-                            h1: 'Хватит собирать данные. Начните собирать интеллект продаж.',
-                            typing: 'Знакомьтесь — Дарья. Тратит 150,000₽ в месяц на рекламу, получает 100 лидов... но только 3 записываются на звонок.',
+                            overline: 'Для коучей и консультантов',
+                            h1: 'Тот же трафик. В 2-3 раза больше дохода. С AI-аналитикой клиентов.',
+                            typing: 'Большинство коучей тратят тысячи на рекламу, но конвертируют только 2-3% лидов. Проблема не в трафике — вы ничего не знаете о лидах до первого звонка.',
                             primaryCta: 'Посмотреть цены',
                             secondaryCta: 'Посмотреть как работает',
                             scarcity: '⚡ Тестируем с первыми 20 бизнесами'
