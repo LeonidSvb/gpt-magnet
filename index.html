@@ -355,9 +355,10 @@
                 font-size: 2rem !important;
             }
 
-            /* Pricing cards mobile */
+            /* Pricing cards mobile - WIDER */
             .pricing-card {
-                padding: 1.5rem !important;
+                padding: 1rem !important;
+                margin: 0 !important;
             }
 
             .price {
@@ -388,6 +389,38 @@
                 padding: 1.25rem !important;
             }
 
+            /* Darya character card - avatar centered, text full width */
+            .character-intro {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                padding: 1.5rem !important;
+            }
+
+            .character-info {
+                width: 100% !important;
+            }
+
+            .character-intro .grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.75rem !important;
+            }
+
+            .character-avatar {
+                margin-bottom: 1rem;
+            }
+
+            /* Demo section - fix emoji being cut off */
+            .text-8xl {
+                font-size: 3.5rem !important;
+            }
+
+            /* ValueStack - fix prices being cut off */
+            .text-3xl {
+                font-size: 1.5rem !important;
+                white-space: nowrap;
+            }
+
             /* Footer mobile */
             .footer a {
                 font-size: 0.875rem;
@@ -395,10 +428,10 @@
                 margin: 0.5rem 0;
             }
 
-            /* Max width for readability */
+            /* Max width for readability - WIDER on mobile */
             .max-w-6xl, .max-w-4xl {
-                padding-left: 1rem;
-                padding-right: 1rem;
+                padding-left: 0.75rem !important;
+                padding-right: 0.75rem !important;
             }
 
             /* Better touch targets */
@@ -564,8 +597,8 @@
             <!-- Story Character -->
             <div class="bg-gradient-to-r from-red-50 to-pink-50 rounded-2xl p-8 mb-12 fade-in-up">
                 <div class="flex items-start gap-6">
-                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                        Д
+                    <div class="w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                        👩‍💼
                     </div>
                     <div class="flex-1">
                         <h3 class="text-2xl font-bold mb-3" x-text="content[currentLang].story.character.name"></h3>
@@ -1350,7 +1383,7 @@
                         contact: {
                             title: 'Choose Your Early Access Plan',
                             subtitle: 'Beta pricing ends when spots are filled. Starter: $99 (3/5 left) | Professional: $300 (1/2 left) | Enterprise: Partnership (1 spot)',
-                            cta: 'View Pricing',
+                            cta: 'Write Leo on WhatsApp',
                             responseTime: 'Setup completed within 48-72 hours',
                             guarantee: '30-day money-back guarantee on all plans'
                         },
@@ -1669,7 +1702,7 @@
                         contact: {
                             title: 'Выберите план раннего доступа',
                             subtitle: 'Бета-цены заканчиваются когда места заполнятся. Starter: 7,000₽ (3/5) | Professional: 22,000₽ (1/2) | Enterprise: Партнерство (1)',
-                            cta: 'Посмотреть цены',
+                            cta: 'Написать Лео в WhatsApp',
                             responseTime: 'Настроим ваш custom GPT в течение 48 часов',
                             guarantee: 'Гарантия 30 дней: Если не повысит качество лидов, вернём деньги и оставите GPT себе'
                         },
